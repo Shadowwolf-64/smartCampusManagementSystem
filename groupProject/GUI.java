@@ -6,11 +6,26 @@ public class GUI extends JFrame {
 
     public GUI() {
 
+        // JPanels //
+        JPanel userInputPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
+        JPanel feedbackPanel = new JPanel();
+        JPanel leftPanel = new JPanel();
+        JPanel rightPanel = new JPanel();
+
         // SplitPane //
         JSplitPane splitPane = new JSplitPane();
         splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
         splitPane.setDividerLocation(700);
         splitPane.setEnabled(false);
+        splitPane.setTopComponent(leftPanel);
+        splitPane.setBottomComponent(rightPanel);
+
+
+
+
+
+
 
 
 
