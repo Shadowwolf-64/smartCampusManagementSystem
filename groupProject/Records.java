@@ -1,4 +1,4 @@
 package groupProject;
 
-public class Records {
+public abstract class Records {
 }

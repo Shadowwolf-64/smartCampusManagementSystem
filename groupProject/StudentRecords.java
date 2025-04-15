@@ -1,4 +1,4 @@
 package groupProject;
 
-public class StudentRecords {
+public class StudentRecords extends Records{
 }
