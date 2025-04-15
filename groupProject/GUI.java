@@ -21,6 +21,11 @@ public class GUI extends JFrame {
         splitPane.setTopComponent(leftPanel);
         splitPane.setBottomComponent(rightPanel);
 
+        // right Panels of split pane //
+        rightPanel.add(userInputPanel);
+        rightPanel.add(buttonPanel);
+        rightPanel.add(feedbackPanel);
+
 
 
 
