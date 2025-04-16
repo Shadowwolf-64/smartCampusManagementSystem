@@ -1,4 +1,6 @@
 package groupProject;
 
-public class Management {
+import javax.swing.*;
+
+public class Management extends JSplitPane {
 }

@@ -38,7 +38,6 @@ public class GUI extends JFrame {
 
 
 
-
         // Frame Configurations //
         add(splitPane);
         setResizable(false);
