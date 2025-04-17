@@ -11,7 +11,7 @@ public class TableModel extends DefaultTableModel {
     //override method to set the data type for each column //
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex == 3) {
+        if (columnIndex == 3 || columnIndex == 4) {
             return Boolean.class; // Sets the "Select" column to boolean
         }
         return String.class;
