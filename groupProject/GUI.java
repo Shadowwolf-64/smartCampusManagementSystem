@@ -1,7 +1,6 @@
 package groupProject;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class GUI extends JFrame {
@@ -30,6 +29,13 @@ public class GUI extends JFrame {
         modifyButton.setPreferredSize(new Dimension(85, 20));
         saveButton.setPreferredSize(new Dimension(85, 20));
         loadButton.setPreferredSize(new Dimension(85, 20));
+
+        // JLabels //
+        JLabel feedbackLabel = new JLabel("Feedback");
+        JLabel infoLabel = new JLabel("Placeholder text");
+
+        // JLabel configurations //
+        feedbackLabel.setFont(new Font( feedbackLabel.getName(), Font.BOLD, 16));
 
         // ScrollPanes //
         JScrollPane studentScrollPane = new JScrollPane();
@@ -63,6 +69,8 @@ public class GUI extends JFrame {
         buttonPanel.add(modifyButton);
         buttonPanel.add(saveButton);
         buttonPanel.add(loadButton);
+        feedbackPanel.add(feedbackLabel);
+        feedbackLabel.add(infoLabel);
 
         // left panel of split pane //
         leftPanel.add(tabbedPane);
