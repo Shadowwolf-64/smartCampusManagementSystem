@@ -75,6 +75,15 @@ public class GUI extends JFrame {
         // left panel of split pane //
         leftPanel.add(tabbedPane);
 
+        // set table column names //
+        String[] studentRecordColumns = {"Student Name", "ID", "Grade", "Select"};
+
+        // tables //
+        TableModel studentRecordModel = new TableModel(studentRecordColumns);
+        JTable studentRecordTable = new JTable(studentRecordModel);
+
+        // adding the tables //
+        studentScrollPane.setViewportView(studentRecordTable);
 
 
 
