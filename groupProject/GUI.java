@@ -78,16 +78,20 @@ public class GUI extends JFrame {
         // set table column names //
         String[] studentRecordColumns = {"Student Name", "ID", "Grade", " "};
         String[] bookColumns = {"Book Name", "Id", "Availability", " "};
+        String[] roomColumns = {"Room Name", "Room Type", "Availability", "Capacity", " "};
 
         // tables //
         TableModel studentRecordModel = new TableModel(studentRecordColumns);
         JTable studentRecordTable = new JTable(studentRecordModel);
         TableModel bookModel = new TableModel(bookColumns);
         JTable bookTable = new JTable(bookModel);
+        TableModel roomModel = new TableModel(roomColumns);
+        JTable roomTable = new JTable(roomModel);
 
         // adding the tables //
         studentScrollPane.setViewportView(studentRecordTable);
         booksScrollPane.setViewportView(bookTable);
+        roomsScrollPane.setViewportView(roomTable);
 
 
 
