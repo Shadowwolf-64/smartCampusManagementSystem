@@ -10,10 +10,26 @@ public class GUI extends JFrame {
 
         // JPanels //
         JPanel userInputPanel = new JPanel();
-        JPanel buttonPanel = new JPanel();
+        JPanel buttonPanel = new JPanel(new FlowLayout());
         JPanel feedbackPanel = new JPanel();
         JPanel leftPanel = new JPanel(new BorderLayout());
         JPanel rightPanel = new JPanel(new GridLayout(3,1, 10, 10 ));
+        
+        // Buttons //
+        JButton findButton = new JButton("Find");
+        JButton addButton = new JButton("Add");
+        JButton removeButton = new JButton("Remove");
+        JButton modifyButton = new JButton("Modify");
+        JButton saveButton = new JButton("Save");
+        JButton loadButton = new JButton("Load");
+
+        // button size configuration //
+        findButton.setPreferredSize(new Dimension(85, 20));
+        addButton.setPreferredSize(new Dimension(85, 20));
+        removeButton.setPreferredSize(new Dimension(85, 20));
+        modifyButton.setPreferredSize(new Dimension(85, 20));
+        saveButton.setPreferredSize(new Dimension(85, 20));
+        loadButton.setPreferredSize(new Dimension(85, 20));
 
         // ScrollPanes //
         JScrollPane studentScrollPane = new JScrollPane();
@@ -41,6 +57,12 @@ public class GUI extends JFrame {
         rightPanel.add(userInputPanel);
         rightPanel.add(buttonPanel);
         rightPanel.add(feedbackPanel);
+        buttonPanel.add(findButton);
+        buttonPanel.add(addButton);
+        buttonPanel.add(removeButton);
+        buttonPanel.add(modifyButton);
+        buttonPanel.add(saveButton);
+        buttonPanel.add(loadButton);
 
         // left panel of split pane //
         leftPanel.add(tabbedPane);
