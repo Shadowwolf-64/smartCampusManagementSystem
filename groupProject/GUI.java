@@ -1,6 +1,7 @@
 package groupProject;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class GUI extends JFrame {
@@ -12,7 +13,7 @@ public class GUI extends JFrame {
         JPanel buttonPanel = new JPanel();
         JPanel feedbackPanel = new JPanel();
         JPanel leftPanel = new JPanel(new BorderLayout());
-        JPanel rightPanel = new JPanel();
+        JPanel rightPanel = new JPanel(new GridLayout(3,1, 10, 10 ));
 
         // ScrollPanes //
         JScrollPane studentScrollPane = new JScrollPane();
