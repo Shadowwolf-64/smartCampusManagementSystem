@@ -14,21 +14,27 @@ public class GUI extends JFrame {
         JPanel leftPanel = new JPanel(new BorderLayout());
         JPanel rightPanel = new JPanel();
 
+        // ScrollPanes //
+        JScrollPane studentScrollPane = new JScrollPane();
+        JScrollPane roomsScrollPane = new JScrollPane();
+        JScrollPane booksScrollPane = new JScrollPane();
+        JScrollPane labEquipmentScrollPane = new JScrollPane();
+
 
         // JTabbedPane //
         JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.addTab("Student Records", null); // null is placeholder until the panel components are created //
-        tabbedPane.addTab("Rooms", null);
-        tabbedPane.addTab("Books", null);
-        tabbedPane.addTab("Lab Equipment", null);
+        tabbedPane.addTab("Student Records", studentScrollPane);
+        tabbedPane.addTab("Rooms", roomsScrollPane);
+        tabbedPane.addTab("Books", booksScrollPane);
+        tabbedPane.addTab("Lab Equipment", labEquipmentScrollPane);
 
         // SplitPane //
         JSplitPane splitPane = new JSplitPane();
         splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
         splitPane.setDividerLocation(700);
         splitPane.setEnabled(false);
-        splitPane.setTopComponent(leftPanel);
-        splitPane.setBottomComponent(rightPanel);
+        splitPane.setLeftComponent(leftPanel);
+        splitPane.setRightComponent(rightPanel);
 
         // right Panels of split pane //
         rightPanel.add(userInputPanel);
