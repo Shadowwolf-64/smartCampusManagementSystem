@@ -1,7 +1,8 @@
 package groupProject;
 
 public class Book {
-    String bookName;
-    int bookID;
-    boolean isAvailable = true;
+    //variables
+    private String bookName;
+    private int bookID;
+    private boolean isAvailable = true;
 }
