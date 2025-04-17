@@ -2,7 +2,7 @@ package groupProject;
 
 public class ResourceTracker {
     String[] books;
-    String[] lapEquip;
+    String[] labEquip;
     
     //setters and getters
     public String[] getBooks() {
