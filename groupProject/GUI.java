@@ -13,7 +13,18 @@ public class GUI extends JFrame {
         JPanel feedbackPanel = new JPanel();
         JPanel leftPanel = new JPanel(new BorderLayout());
         JPanel rightPanel = new JPanel(new GridLayout(3,1, 10, 10 ));
+
+        // Cards for userInputPanel //
+        JPanel studentInputCard = new JPanel(); // names can be changed and more cards can be added //
+        JPanel bookingInputCard = new JPanel();
+
+        // add cards to userInputPanel //
+        userInputPanel.add(studentInputCard, "Student");
+        userInputPanel.add(bookingInputCard, "Booking");
+
         
+
+
         // Buttons //
         JButton findButton = new JButton("Find");
         JButton addButton = new JButton("Add");
