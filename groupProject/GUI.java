@@ -17,12 +17,15 @@ public class GUI extends JFrame {
         // Cards for userInputPanel //
         JPanel studentInputCard = new JPanel(); // names can be changed and more cards can be added //
         JPanel bookingInputCard = new JPanel();
+        JPanel staffInputCard = new JPanel();
+        JPanel roomSchedulerInputCard = new JPanel();
+
 
         // add cards to userInputPanel //
         userInputPanel.add(studentInputCard, "Student");
         userInputPanel.add(bookingInputCard, "Booking");
-
-        
+        userInputPanel.add(staffInputCard, "Staff");
+        userInputPanel.add(roomSchedulerInputCard, "Rooms");
 
 
         // Buttons //
@@ -87,7 +90,7 @@ public class GUI extends JFrame {
         leftPanel.add(tabbedPane);
 
         // set table column names //
-        String[] studentRecordColumns = {"Student Name", "ID", "Grade", " "};
+        String[] studentRecordColumns = {"Student Name", "ID", "Degree Pathway", "Grade", " "};
         String[] bookColumns = {"Book Name", "Id", "Availability", " "};
         String[] roomColumns = {"Room Name", "Room Type", "Availability", "Capacity", " "};
 
