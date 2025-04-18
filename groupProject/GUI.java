@@ -7,6 +7,9 @@ public class GUI extends JFrame {
 
     public GUI() {
 
+        //creating the StudentRecords object
+        StudentRecords studentRecords = new StudentRecords();
+
         // JPanels //
         JPanel userInputPanel = new JPanel(new CardLayout());
         JPanel buttonPanel = new JPanel(new FlowLayout());
@@ -20,7 +23,6 @@ public class GUI extends JFrame {
         JPanel staffInputCard = new JPanel();
         JPanel roomSchedulerInputCard = new JPanel();
 
-
         // add cards to userInputPanel //
         userInputPanel.add(studentInputCard, "Student");
         userInputPanel.add(bookingInputCard, "Booking");
@@ -28,7 +30,7 @@ public class GUI extends JFrame {
         userInputPanel.add(roomSchedulerInputCard, "Rooms");
 
 
-        // Buttons //
+        // Buttons for buttonPanel//
         JButton findButton = new JButton("Find");
         JButton addButton = new JButton("Add");
         JButton removeButton = new JButton("Remove");
@@ -44,11 +46,11 @@ public class GUI extends JFrame {
         saveButton.setPreferredSize(new Dimension(85, 20));
         loadButton.setPreferredSize(new Dimension(85, 20));
 
-        // JLabels //
+        // JLabels for feedbackPanel//
         JLabel feedbackLabel = new JLabel("Feedback");
         JLabel infoLabel = new JLabel("Placeholder text");
 
-        // JLabel configurations //
+        // JLabel configurations for feedbackPanel //
         feedbackLabel.setFont(new Font( feedbackLabel.getName(), Font.BOLD, 16));
 
         // ScrollPanes //
@@ -118,8 +120,12 @@ public class GUI extends JFrame {
 
 
 
+        //creating a GridBaGLayout and constraints to pass to the different cards
+        GridBagLayout layout = new GridBagLayout();
+        GridBagConstraints gbc = new GridBagConstraints();
 
-
+        //passing the JPanel component to the StudentRecords class
+        studentRecords.studentRecords(studentInputCard, layout, gbc);
 
         // Frame Configurations //
         add(splitPane);
