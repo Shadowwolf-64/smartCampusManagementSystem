@@ -8,7 +8,7 @@ public class GUI extends JFrame {
     public GUI() {
 
         // JPanels //
-        JPanel userInputPanel = new JPanel();
+        JPanel userInputPanel = new JPanel(new CardLayout());
         JPanel buttonPanel = new JPanel(new FlowLayout());
         JPanel feedbackPanel = new JPanel();
         JPanel leftPanel = new JPanel(new BorderLayout());
