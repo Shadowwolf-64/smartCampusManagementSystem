@@ -1,6 +1,7 @@
 package groupProject;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,11 @@ public class StaffRecords extends JPanel {
     private final List<Object> staff = new ArrayList<>();
 
     public void staffRecords(JPanel staffInputCard, GridBagLayout layout, GridBagConstraints gbc) {
+        //border and border title creation
+        Border blackline = BorderFactory.createTitledBorder("Staff Records");
+        //adds border and title to the card
+        staffInputCard.setBorder(blackline);
+
         //JLabels for the student input fields in the userInputPanel
         JLabel staffName = new JLabel("Staff Name:");
         JLabel department = new JLabel("Department:");
