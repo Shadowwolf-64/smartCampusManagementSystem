@@ -9,6 +9,8 @@ public class GUI extends JFrame {
 
         //creating the StudentRecords object
         StudentRecords studentRecords = new StudentRecords();
+        //creating the StaffRecords object
+        StaffRecords staffRecords = new StaffRecords();
 
         // JPanels //
         JPanel userInputPanel = new JPanel(new CardLayout());
@@ -22,11 +24,6 @@ public class GUI extends JFrame {
         JPanel bookingInputCard = new JPanel();
         JPanel staffInputCard = new JPanel();
         JPanel roomSchedulerInputCard = new JPanel();
-
-        //JLabel for the userInputCard
-//        JLabel userInputMessage = new JLabel("Student Input (placeholder)");
-//        userInputMessage.setPreferredSize(new Dimension(10,10));
-//        userInputPanel.add(userInputMessage, "Student");
 
         // add cards to userInputPanel //
         userInputPanel.add(studentInputCard, "Student");
@@ -135,8 +132,10 @@ public class GUI extends JFrame {
         GridBagLayout layout = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
 
-        //passing the JPanel component, GridBagLayout and GridBagConstraints to the StudentRecords class
+        //passing the JPanel component, GridBagLayout and GridBagConstraints
+        // to the StudentRecords, StaffRecords, RoomScheduler, and ResourceTracker classes
         studentRecords.studentRecords(studentInputCard, layout, gbc);
+        staffRecords.staffRecords(staffInputCard, layout, gbc);
 
         // Frame Configurations //
         add(splitPane);
