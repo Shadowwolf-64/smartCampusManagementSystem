@@ -11,6 +11,9 @@ public class GUI extends JFrame {
         StudentRecords studentRecords = new StudentRecords();
         //creating the StaffRecords object
         StaffRecords staffRecords = new StaffRecords();
+        // creating management for changeListener //
+        Management management = new Management();
+
 
         // JPanels //
         JPanel userInputPanel = new JPanel(new CardLayout());
@@ -136,6 +139,12 @@ public class GUI extends JFrame {
         // to the StudentRecords, StaffRecords, RoomScheduler, and ResourceTracker classes
         studentRecords.studentRecords(studentInputCard, layout, gbc);
         staffRecords.staffRecords(staffInputCard, layout, gbc);
+
+        // retrieving CardLayout from userInputPanel //
+        CardLayout cardLayout = (CardLayout) userInputPanel.getLayout();
+
+        //adding ChangeListener to the tabbedPane using Management //
+        management.addTabChangeListener(tabbedPane, userInputPanel, cardLayout);
 
         // Frame Configurations //
         add(splitPane);
