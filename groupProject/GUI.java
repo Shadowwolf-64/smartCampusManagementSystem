@@ -58,6 +58,7 @@ public class GUI extends JFrame {
         JScrollPane roomsScrollPane = new JScrollPane();
         JScrollPane booksScrollPane = new JScrollPane();
         JScrollPane labEquipmentScrollPane = new JScrollPane();
+        JScrollPane staffScrollPane = new JScrollPane();
 
 
         // JTabbedPane //
@@ -66,6 +67,7 @@ public class GUI extends JFrame {
         tabbedPane.addTab("Rooms", roomsScrollPane);
         tabbedPane.addTab("Books", booksScrollPane);
         tabbedPane.addTab("Lab Equipment", labEquipmentScrollPane);
+        tabbedPane.addTab("Staff Records", staffScrollPane);
 
         // SplitPane //
         JSplitPane splitPane = new JSplitPane();
