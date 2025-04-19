@@ -103,6 +103,7 @@ public class GUI extends JFrame {
         String[] bookColumns = {"Book Name", "Id", "Availability", " "};
         String[] labEquipColumns = {"Equipment Name", "Equipment ID", "Availability", " "};
         String[] roomColumns = {"Room Name", "Room Type", "Availability", "Capacity", " "};
+        String[] staffRecordColumns = {"Staff Name", "Id", "Office Hours", "Department", " "};
 
         // tables //
         TableModel studentRecordModel = new TableModel(studentRecordColumns);
@@ -113,12 +114,15 @@ public class GUI extends JFrame {
         JTable labEquipTable = new JTable(labEquipModel);
         TableModel roomModel = new TableModel(roomColumns);
         JTable roomTable = new JTable(roomModel);
+        TableModel staffRecordModel = new TableModel(staffRecordColumns);
+        JTable staffRecordTable = new JTable(staffRecordModel);
 
         // adding the tables //
         studentScrollPane.setViewportView(studentRecordTable);
         booksScrollPane.setViewportView(bookTable);
         roomsScrollPane.setViewportView(roomTable);
         labEquipmentScrollPane.setViewportView(labEquipTable);
+        staffScrollPane.setViewportView(staffRecordTable);
 
 
 
