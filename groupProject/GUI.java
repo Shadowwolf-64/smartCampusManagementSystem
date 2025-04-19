@@ -11,6 +11,7 @@ public class GUI extends JFrame {
         StudentRecords studentRecords = new StudentRecords();
         StaffRecords staffRecords = new StaffRecords();
         ResourceTracker resourceTracker = new ResourceTracker();
+        RoomScheduler roomScheduler = new RoomScheduler();
 
         // JPanels //
         JPanel userInputPanel = new JPanel(new CardLayout());
@@ -137,6 +138,7 @@ public class GUI extends JFrame {
         studentRecords.studentRecords(studentInputCard, layout, gbc);
         staffRecords.staffRecords(staffInputCard, layout, gbc);
         resourceTracker.resourceTracker(bookingInputCard, layout, gbc);
+        roomScheduler.roomScheduler(roomSchedulerInputCard, layout, gbc);
 
         // Frame Configurations //
         add(splitPane);

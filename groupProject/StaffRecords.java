@@ -23,9 +23,9 @@ public class StaffRecords extends JPanel {
         JTextField id = new JTextField(10);
         JTextField hours = new JTextField(10);
 
-        //adding the layout and constraints for the studentInputCard
+        //adding the layout and constraints for the staffInputCard
         staffInputCard.setLayout(layout);
-        //positioning and adding JLabels and JTextFields to the studentInputCard
+        //positioning and adding JLabels and JTextFields to the staffInputCard
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
         gbc.gridy = 0;
