@@ -1,11 +1,16 @@
 package groupProject;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class RoomScheduler extends JPanel{
 
     public void roomScheduler(JPanel roomSchedulerInputCard, GridBagLayout layout, GridBagConstraints gbc) {
+        //border and border title creation
+        Border blackline = BorderFactory.createTitledBorder("Room Scheduler");
+        //adds border and title to the card
+        roomSchedulerInputCard.setBorder(blackline);
         //JLabels for the student input fields in the userInputPanel
         JLabel roomName = new JLabel("Room Name:");
         JLabel roomCapacity = new JLabel("Room Capacity:");
