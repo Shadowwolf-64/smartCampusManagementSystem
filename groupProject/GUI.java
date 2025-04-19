@@ -19,9 +19,11 @@ public class GUI extends JFrame {
         // JPanels //
         JPanel userInputPanel = new JPanel(new CardLayout());
         JPanel buttonPanel = new JPanel(new FlowLayout());
-        JPanel feedbackPanel = new JPanel();
+        JPanel feedbackPanel = new JPanel(new GridLayout(2 ,1));
         JPanel leftPanel = new JPanel(new BorderLayout());
         JPanel rightPanel = new JPanel(new GridLayout(3,1, 10, 10 ));
+        JPanel feedbackTopPanel = new JPanel();
+        JPanel feedbackBottomPanel = new JPanel();
 
         // Cards for userInputPanel //
         JPanel studentInputCard = new JPanel(); // names can be changed and more cards can be added //
@@ -93,16 +95,18 @@ public class GUI extends JFrame {
         buttonPanel.add(modifyButton);
         buttonPanel.add(saveButton);
         buttonPanel.add(loadButton);
-        feedbackPanel.add(feedbackLabel);
-        feedbackLabel.add(infoLabel);
+        feedbackPanel.add(feedbackTopPanel);
+        feedbackPanel.add(feedbackBottomPanel);
+        feedbackTopPanel.add(feedbackLabel);
+        feedbackBottomPanel.add(infoLabel);
 
         // left panel of split pane //
         leftPanel.add(tabbedPane);
 
         // set table column names //
-        String[] studentRecordColumns = {"Student Name", "ID", "Degree Pathway", "Grade", " "};
+        String[] studentRecordColumns = {"Student Name", "Id", "Degree Pathway", "Grade", " "};
         String[] bookColumns = {"Book Name", "Id", "Availability", " "};
-        String[] labEquipColumns = {"Equipment Name", "Equipment ID", "Availability", " "};
+        String[] labEquipColumns = {"Equipment Name", "Equipment Id", "Availability", " "};
         String[] roomColumns = {"Room Name", "Room Type", "Availability", "Capacity", " "};
         String[] staffRecordColumns = {"Staff Name", "Id", "Office Hours", "Department", " "};
 

@@ -14,9 +14,8 @@ public class Management extends JSplitPane {
                 int selectedIndex = tabbedPane.getSelectedIndex();
                 switch (selectedIndex) {
                     case 0 -> cardLayout.show(userInputPanel, "Student");
-                    case 1 -> cardLayout.show(userInputPanel, "Booking");
-                    case 2 -> cardLayout.show(userInputPanel, "Rooms");
-                    case 3 -> cardLayout.show(userInputPanel, "Booking");
+                    case 1 -> cardLayout.show(userInputPanel, "Rooms");
+                    case 2, 3 -> cardLayout.show(userInputPanel, "Booking");
                     case 4 -> cardLayout.show(userInputPanel, "Staff");
 
                 }
