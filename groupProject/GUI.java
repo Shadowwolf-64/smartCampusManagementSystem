@@ -13,6 +13,9 @@ public class GUI extends JFrame {
         ResourceTracker resourceTracker = new ResourceTracker();
         RoomScheduler roomScheduler = new RoomScheduler();
 
+        // creating management for changeListener //
+        Management management = new Management();
+
         // JPanels //
         JPanel userInputPanel = new JPanel(new CardLayout());
         JPanel buttonPanel = new JPanel(new FlowLayout());
@@ -139,6 +142,13 @@ public class GUI extends JFrame {
         staffRecords.staffRecords(staffInputCard, layout, gbc);
         resourceTracker.resourceTracker(bookingInputCard, layout, gbc);
         roomScheduler.roomScheduler(roomSchedulerInputCard, layout, gbc);
+
+        // retrieving CardLayout from userInputPanel //
+        CardLayout cardLayout = (CardLayout) userInputPanel.getLayout();
+
+        //adding ChangeListener to the tabbedPane using Management //
+        management.addTabChangeListener(tabbedPane, userInputPanel, cardLayout);
+
 
         // Frame Configurations //
         add(splitPane);
