@@ -19,9 +19,9 @@ public class ResourceTracker {
         JTextField name = new JTextField(10);
         JTextField id = new JTextField(10);
 
-        //adding the layout and constraints for the studentInputCard
+        //adding the layout and constraints for the bookingInputCard
         bookingInputCard.setLayout(layout);
-        //positioning and adding JLabels and JTextFields to the studentInputCard
+        //positioning and adding JLabels and JTextFields to the bookingInputCard
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
         gbc.gridy = 0;
