@@ -23,6 +23,11 @@ public class GUI extends JFrame {
         JPanel staffInputCard = new JPanel();
         JPanel roomSchedulerInputCard = new JPanel();
 
+        //JLabel for the userInputCard
+//        JLabel userInputMessage = new JLabel("Student Input (placeholder)");
+//        userInputMessage.setPreferredSize(new Dimension(10,10));
+//        userInputPanel.add(userInputMessage, "Student");
+
         // add cards to userInputPanel //
         userInputPanel.add(studentInputCard, "Student");
         userInputPanel.add(bookingInputCard, "Booking");
@@ -126,7 +131,7 @@ public class GUI extends JFrame {
         GridBagLayout layout = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
 
-        //passing the JPanel component to the StudentRecords class
+        //passing the JPanel component, GridBagLayout and GridBagConstraints to the StudentRecords class
         studentRecords.studentRecords(studentInputCard, layout, gbc);
 
         // Frame Configurations //
