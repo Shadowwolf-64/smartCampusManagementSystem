@@ -22,7 +22,8 @@ public class Management extends JSplitPane {
             }
         });
     }
-
+    
+    // this might need to be looked at again once we have data to populate the tables //
     public void searchById(JTable... tables) {
         // asks the user to enter an id //
         String id = JOptionPane.showInputDialog(null, "Enter ID to search:", "Search by ID", JOptionPane.QUESTION_MESSAGE);
