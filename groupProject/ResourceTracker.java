@@ -1,6 +1,7 @@
 package groupProject;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,10 @@ public class ResourceTracker {
     private final List<Object> labEquipment = new ArrayList<>();
 
     public void resourceTracker(JPanel bookingInputCard, GridBagLayout layout, GridBagConstraints gbc) {
+        //border and border title creation
+        Border blackline = BorderFactory.createTitledBorder("Resources");
+        //adds border and title to the card
+        bookingInputCard.setBorder(blackline);
         //JLabels for the student input fields in the userInputPanel
         JLabel resourceName = new JLabel("Resource Name:");
         JLabel resourceID = new JLabel("Resource ID:");
