@@ -1,23 +1,42 @@
 package groupProject;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ResourceTracker {
-    String[] books;
-    String[] labEquip;
-    
-    //setters and getters
-    public String[] getBooks() {
-        return books;
+    //variables
+    private final List<Object> books = new ArrayList<>();
+    private final List<Object> labEquipment = new ArrayList<>();
+
+    public void resourceTracker(JPanel bookingInputCard, GridBagLayout layout, GridBagConstraints gbc) {
+        //JLabels for the student input fields in the userInputPanel
+        JLabel resourceName = new JLabel("Resource Name:");
+        JLabel resourceID = new JLabel("Resource ID:");
+
+        //JTextFields for the above JLabels for userInputPanel
+        JTextField name = new JTextField(10);
+        JTextField id = new JTextField(10);
+
+        //adding the layout and constraints for the studentInputCard
+        bookingInputCard.setLayout(layout);
+        //positioning and adding JLabels and JTextFields to the studentInputCard
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        bookingInputCard.add(resourceName, gbc);
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        bookingInputCard.add(name, gbc);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        bookingInputCard.add(resourceID, gbc);
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        bookingInputCard.add(id, gbc);
     }
 
-    public void setBooks(String[] books) {
-        this.books = books;
-    }
-
-    public String[] getLabEquip() {
-        return labEquip;
-    }
-
-    public void setLabEquip(String[] labEquip) {
-        this.labEquip = labEquip;
-    }
 }
