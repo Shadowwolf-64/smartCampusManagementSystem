@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 //this class needs to extend the Records class when create the method overrides (it was removed to prevent errors till they were created)
 public class StudentRecords extends JPanel{
@@ -11,6 +13,11 @@ public class StudentRecords extends JPanel{
     private final List<Object> students = new ArrayList<>();
 
     public void studentRecords(JPanel studentInputCard, GridBagLayout layout, GridBagConstraints gbc) {
+        //border and border title creation
+        Border blackline = BorderFactory.createTitledBorder("Student Records");
+        //adds border and title to the card
+        studentInputCard.setBorder(blackline);
+
         //JLabels for the student input fields in the userInputPanel
         JLabel studentName = new JLabel("Student Name:");
         JLabel degreePathway = new JLabel("Degree Pathway:");
