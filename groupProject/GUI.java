@@ -106,7 +106,7 @@ public class GUI extends JFrame {
         // set table column names //
         String[] studentRecordColumns = {"Student Name", "Id", "Degree Pathway", "Grade", " "};
         String[] bookColumns = {"Book Name", "Id", "Availability", " "};
-        String[] labEquipColumns = {"Equipment Name", "Equipment Id", "Availability", " "};
+        String[] labEquipColumns = {"Equipment Name", "Id", "Availability", " "};
         String[] roomColumns = {"Room Name", "Room Type", "Availability", "Capacity", " "};
         String[] staffRecordColumns = {"Staff Name", "Id", "Office Hours", "Department", " "};
 
@@ -153,6 +153,8 @@ public class GUI extends JFrame {
         //adding ChangeListener to the tabbedPane using Management //
         management.addTabChangeListener(tabbedPane, userInputPanel, cardLayout);
 
+        // actionListeners for buttons //
+        findButton.addActionListener(e -> { management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
 
         // Frame Configurations //
         add(splitPane);
