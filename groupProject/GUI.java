@@ -104,11 +104,11 @@ public class GUI extends JFrame {
         leftPanel.add(tabbedPane);
 
         // set table column names //
-        String[] studentRecordColumns = {"Student Name", "Id", "Degree Pathway", "Grade", " "};
-        String[] bookColumns = {"Book Name", "Id", "Availability", " "};
-        String[] labEquipColumns = {"Equipment Name", "Id", "Availability", " "};
+        String[] studentRecordColumns = {"Student Name", "Student ID", "Degree Pathway", "Grade", " "};
+        String[] bookColumns = {"Book Name", "Book ID", "Availability", " "};
+        String[] labEquipColumns = {"Equipment Name", "Equipment ID", "Availability", " "};
         String[] roomColumns = {"Room Name", "Room Type", "Availability", "Capacity", " "};
-        String[] staffRecordColumns = {"Staff Name", "Id", "Office Hours", "Department", " "};
+        String[] staffRecordColumns = {"Staff Name", "Staff ID", "Office Hours", "Department", " "};
 
         // tables //
         TableModel studentRecordModel = new TableModel(studentRecordColumns);
