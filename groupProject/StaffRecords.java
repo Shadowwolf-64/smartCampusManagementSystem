@@ -18,10 +18,10 @@ public class StaffRecords extends Records{
         staffInputCard.setBorder(blackline);
 
         //JLabels for the student input fields in the userInputPanel
-        JLabel staffName = new JLabel("Staff Name:");
-        JLabel department = new JLabel("Department:");
-        JLabel staffID = new JLabel("Staff ID:");
-        JLabel officeHours = new JLabel("Office Hours:");
+        JLabel staffName = new JLabel("Staff Name: ");
+        JLabel department = new JLabel("Department: ");
+        JLabel staffID = new JLabel("Staff ID: ");
+        JLabel officeHours = new JLabel("Office Hours:  ");
 
         //JTextFields for the above JLabels for userInputPanel
         JTextField name = new JTextField(10);

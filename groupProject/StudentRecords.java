@@ -19,10 +19,10 @@ public class StudentRecords extends Records{
         studentInputCard.setBorder(blackline);
 
         //JLabels for the student input fields in the userInputPanel
-        JLabel studentName = new JLabel("Student Name:");
-        JLabel degreePathway = new JLabel("Degree Pathway:");
-        JLabel studentID = new JLabel("Student ID:");
-        JLabel grade = new JLabel("Grade:");
+        JLabel studentName = new JLabel("Student Name: ");
+        JLabel degreePathway = new JLabel("Degree Pathway:  ");
+        JLabel studentID = new JLabel("Student ID: ");
+        JLabel grade = new JLabel("Grade: ");
 
         //JTextFields for the above JLabels for userInputPanel
         JTextField name = new JTextField(10);

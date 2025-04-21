@@ -17,7 +17,7 @@ public class ResourceTracker extends Records{
         //adds border and title to the card
         bookingInputCard.setBorder(blackline);
         //JLabels for the student input fields in the userInputPanel
-        JLabel resourceName = new JLabel("Resource Name:");
+        JLabel resourceName = new JLabel("Resource Name:  ");
         JLabel resourceID = new JLabel("Resource ID:");
 
         //JTextFields for the above JLabels for userInputPanel
