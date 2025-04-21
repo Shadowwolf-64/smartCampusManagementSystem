@@ -49,6 +49,7 @@ public class GUI extends JFrame {
         // JLabels for feedbackPanel//
         JLabel feedbackLabel = new JLabel("Feedback");
         JLabel infoLabel = new JLabel("Placeholder text");
+        infoLabel.setVisible(false);
 
         // JLabel configurations for feedbackPanel //
         feedbackLabel.setFont(new Font( feedbackLabel.getName(), Font.BOLD, 16));

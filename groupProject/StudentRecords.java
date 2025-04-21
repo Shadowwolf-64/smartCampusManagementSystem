@@ -2,9 +2,11 @@ package groupProject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
@@ -13,6 +15,7 @@ public class StudentRecords extends JPanel{
     private final List<Object> students = new ArrayList<>();
     private final TableModel studentRecordModel;
     Student student = new Student();
+    Management management = new Management();
 
     //JLabels for the student input fields in the userInputPanel
     JLabel studentNameLabel = new JLabel("Student Name: ");
@@ -83,13 +86,33 @@ public class StudentRecords extends JPanel{
         String path = pathway.getText();
         String stuID = id.getText();
         String grade = gradeInput.getText();
-        try {
-            studentRecordModel.addRow(new Object[]{name, path, stuID, grade, false});
-            infoLabel.setText("New student added!");
-        }catch (Exception ex) {
-            infoLabel.setText("You fucked up!");
-            throw new RuntimeException(ex);
+        //sets the time limit for displaying error messages when adding tasks
+        int delay = 3500;
+
+        if(Objects.equals(name, "") || Objects.equals(path, "") || Objects.equals(grade, "")) {
+            infoLabel.setText("Please fill in all the boxes correctly");
+            infoLabel.setVisible(true);
+            ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+            new Timer(delay, taskPerformed).start();
+        } else if (id.getText().isEmpty()) {
+            stuID = String.valueOf(management.generateNewID());
+            try {
+                studentRecordModel.addRow(new Object[]{name, stuID, path, grade, false});
+                infoLabel.setText("New student added!");
+            }catch (Exception ex) {
+                infoLabel.setText("You fucked up!");
+                throw new RuntimeException(ex);
+            }
+        } else {
+            try {
+                studentRecordModel.addRow(new Object[]{name, path, stuID, grade, false});
+                infoLabel.setText("New student added!");
+            }catch (Exception ex) {
+                infoLabel.setText("You screwed up!");
+                throw new RuntimeException(ex);
+            }
         }
+
     }
 
 }
