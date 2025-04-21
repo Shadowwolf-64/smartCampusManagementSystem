@@ -1,6 +1,7 @@
 package groupProject;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class GUI extends JFrame {
@@ -129,6 +130,50 @@ public class GUI extends JFrame {
         labEquipmentScrollPane.setViewportView(labEquipTable);
         staffScrollPane.setViewportView(staffRecordTable);
 
+
+        // Student Records
+        Object[] student1 = {"John Doe", "12345", "Computer Science", "A", false};
+        Object[] student2 = {"Jane Smith", "67890", "Mathematics", "B", false};
+        Object[] student3 = {"Alice Johnson", "11223", "Physics", "A+", false};
+
+        // Staff Records
+        Object[] staff1 = {"Dr. Brown", "54321", "9 AM - 5 PM", "Physics", false};
+        Object[] staff2 = {"Prof. Green", "98765", "10 AM - 6 PM", "Chemistry", false};
+        Object[] staff3 = {"Dr. White", "19283", "8 AM - 4 PM", "Biology", false};
+
+        // Books
+        Object[] book1 = {"Introduction to Java", "James Gosling", "001", "Available", false};
+        Object[] book2 = {"Data Structures", "Mark Allen Weiss", "002", "Checked Out", false};
+        Object[] book3 = {"Operating Systems", "Abraham Silberschatz", "003", "Available", false};
+
+        // Lab Equipment
+        Object[] labEquip1 = {"Microscope", "E001", "Biology", "Available", false};
+        Object[] labEquip2 = {"Oscilloscope", "E002", "Physics", "In Use", false};
+        Object[] labEquip3 = {"3D Printer", "E003", "Engineering", "Available", false};
+
+        // Rooms
+        Object[] room1 = {"Room 101", "Lecture Hall", "Available", "50", false};
+        Object[] room2 = {"Lab A", "Laboratory", "In Use", "30", false};
+        Object[] room3 = {"Conference Room", "Meeting Room", "Available", "20", false};
+
+
+        // manually adding table data for testing purposes //
+        //studentRecordModel.addRow();
+        studentRecordModel.addRow(student1);
+        studentRecordModel.addRow(student2);
+        studentRecordModel.addRow(student3);
+        staffRecordModel.addRow(staff1);
+        staffRecordModel.addRow(staff2);
+        staffRecordModel.addRow(staff3);
+        bookModel.addRow(book1);
+        bookModel.addRow(book2);
+        bookModel.addRow(book3);
+        labEquipModel.addRow(labEquip1);
+        labEquipModel.addRow(labEquip2);
+        labEquipModel.addRow(labEquip3);
+        roomModel.addRow(book1);
+        roomModel.addRow(book2);
+        roomModel.addRow(book3);
 
 
 
