@@ -90,6 +90,10 @@ public class StaffRecords extends Records{
 
     @Override
     public int generateID() {
-        return 0;
+        int newStaffID = (int)(Math.random()* 1000) + 1;
+        while (staff.contains(newStaffID)) {
+            newStaffID = (int)(Math.random()* 1000) + 1;
+        }
+        return newStaffID;
     }
 }
