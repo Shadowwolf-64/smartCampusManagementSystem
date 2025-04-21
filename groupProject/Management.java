@@ -86,8 +86,12 @@ public class Management extends JSplitPane {
                     // Check if the checkbox is selected //
                     Boolean isChecked = (Boolean) tableModel.getValueAt(i, checkboxColumnIndex);
                     if (isChecked != null && isChecked) {
+                        // confirm removal //
+                        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to remove this rows data?", "Confirm removal", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                         // Remove the row
-                        tableModel.removeRow(i);
+                        if (confirm == JOptionPane.YES_OPTION) {
+                            tableModel.removeRow(i);
+                        }
                     }
                 }
             }
