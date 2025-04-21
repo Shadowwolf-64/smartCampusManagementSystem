@@ -8,15 +8,6 @@ public class GUI extends JFrame {
 
     public GUI() {
 
-        //creating the class objects
-        StudentRecords studentRecords = new StudentRecords();
-        StaffRecords staffRecords = new StaffRecords();
-        ResourceTracker resourceTracker = new ResourceTracker();
-        RoomScheduler roomScheduler = new RoomScheduler();
-
-        // creating management for changeListener //
-        Management management = new Management();
-
         // JPanels //
         JPanel userInputPanel = new JPanel(new CardLayout());
         JPanel buttonPanel = new JPanel(new FlowLayout());
@@ -130,6 +121,15 @@ public class GUI extends JFrame {
         labEquipmentScrollPane.setViewportView(labEquipTable);
         staffScrollPane.setViewportView(staffRecordTable);
 
+        //creating the class objects
+        StudentRecords studentRecords = new StudentRecords(studentRecordModel);
+        StaffRecords staffRecords = new StaffRecords();
+        ResourceTracker resourceTracker = new ResourceTracker();
+        RoomScheduler roomScheduler = new RoomScheduler();
+
+        // creating management for changeListener //
+        Management management = new Management();
+
 
         // Student Records
         Object[] student1 = {"John Doe", "12345", "Computer Science", "A", false};
@@ -203,6 +203,7 @@ public class GUI extends JFrame {
         findButton.addActionListener(_ -> { management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
         removeButton.addActionListener(_ ->{ management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
         modifyButton.addActionListener(_ ->{ management.modifyCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
+        addButton.addActionListener(_ -> {studentRecords.addStudent(infoLabel);});
 
         // Frame Configurations //
         add(splitPane);
