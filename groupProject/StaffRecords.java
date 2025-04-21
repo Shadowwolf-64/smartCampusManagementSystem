@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //this class needs to extend the Records class when create the method overrides (it was removed to prevent errors till they were created)
-public class StaffRecords extends Records{
+public class StaffRecords extends JPanel{
     //variables
     private final List<Object> staff = new ArrayList<>();
 
@@ -63,39 +63,5 @@ public class StaffRecords extends Records{
         gbc.gridx = 1;
         gbc.gridy = 3;
         staffInputCard.add(hours, gbc);
-    }
-
-
-    // this might need to be looked at again once we have data to populate the tables //
-
-    @Override
-    public void find() {
-
-    }
-
-    @Override
-    public void modify() {
-
-    }
-
-    @Override
-    public void add() {
-
-    }
-
-    @Override
-    public void remove() {
-
-    }
-
-    @Override
-    public int generateID() {
-        //creates an ID for new staff
-        int newStaffID = (int)(Math.random()* 1000) + 1;
-        //checks if number already exists in the staff List, and generates another number if it does
-        while (staff.contains(newStaffID)) {
-            newStaffID = (int)(Math.random()* 1000) + 1;
-        }
-        return newStaffID;
     }
 }

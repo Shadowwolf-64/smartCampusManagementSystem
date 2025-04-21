@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResourceTracker extends Records{
+public class ResourceTracker extends JPanel{
     //variables
     private final List<Object> books = new ArrayList<>();
     private final List<Object> labEquipment = new ArrayList<>();
@@ -42,36 +42,5 @@ public class ResourceTracker extends Records{
         gbc.gridx = 1;
         gbc.gridy = 1;
         bookingInputCard.add(id, gbc);
-    }
-
-    @Override
-    public void find() {
-
-    }
-
-    @Override
-    public void modify() {
-
-    }
-
-    @Override
-    public void add() {
-
-    }
-
-    @Override
-    public void remove() {
-
-    }
-
-    @Override
-    public int generateID() {
-        //creates an ID for either a new book or new labEquipment
-        int newID = (int)(Math.random()* 10000) + 1;
-        //checks if number already exists in the books or labEquipment Lists, and generates another number if it does
-        while (books.contains(newID) || labEquipment.contains(newID)) {
-            newID = (int)(Math.random()* 10000) + 1;
-        }
-        return newID;
     }
 }

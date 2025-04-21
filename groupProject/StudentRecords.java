@@ -8,7 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
 //this class needs to extend the Records class when create the method overrides (it was removed to prevent errors till they were created)
-public class StudentRecords extends Records{
+public class StudentRecords extends JPanel{
     //variables
     private final List<Object> students = new ArrayList<>();
 
@@ -65,37 +65,5 @@ public class StudentRecords extends Records{
         gbc.gridy = 3;
         studentInputCard.add(gradeInput, gbc);
 
-    }
-
-    @Override
-    public void find() {
-
-    }
-
-    @Override
-    public void modify() {
-
-    }
-
-    @Override
-    public void add() {
-
-    }
-
-    @Override
-    public void remove() {
-
-    }
-
-
-    @Override
-    public int generateID() {
-        //creates an ID for new students
-        int newStudentID = (int)(Math.random()* 5000) + 1;
-        //checks if number already exists in the students List, and generates another number if it does
-        while (students.contains(newStudentID)) {
-            newStudentID = (int)(Math.random()* 5000) + 1;
-        }
-        return newStudentID;
     }
 }
