@@ -171,9 +171,9 @@ public class GUI extends JFrame {
         labEquipModel.addRow(labEquip1);
         labEquipModel.addRow(labEquip2);
         labEquipModel.addRow(labEquip3);
-        roomModel.addRow(book1);
-        roomModel.addRow(book2);
-        roomModel.addRow(book3);
+        roomModel.addRow(room1);
+        roomModel.addRow(room2);
+        roomModel.addRow(room3);
 
 
 
