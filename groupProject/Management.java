@@ -58,7 +58,7 @@ public class Management extends JSplitPane {
                     if (cellValue != null && cellValue.toString().equalsIgnoreCase(id)) {
                         // get the row as an object array //
                         StringBuilder rowData = new StringBuilder();
-                        for (int column = 0; column < table.getColumnCount(); column++) {
+                        for (int column = 0; column < table.getColumnCount() -1; column++) {
                             rowData.append(table.getColumnName(column)).append(": ")
                                     .append(table.getValueAt(row, column)).append("\n");
                         }
