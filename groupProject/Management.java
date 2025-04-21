@@ -3,6 +3,7 @@ package groupProject;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class Management extends JSplitPane {
@@ -72,5 +73,24 @@ public class Management extends JSplitPane {
         // if no match is found
         JOptionPane.showMessageDialog(null, "No match found for ID: " + id, "Search Result", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    // method to remove the row that is checked in a table //
+    public void removeCheckedRow(JTable ... tables) {
+        for (JTable table : tables) {
+            DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+                // Iterate through rows in reverse order to prevent issues with the index when removing more than 1 row //
+                for (int i = tableModel.getRowCount() - 1; i >= 0; i--) {
+                    // Assumes the checkbox column is the last column
+                    int checkboxColumnIndex = tableModel.getColumnCount() - 1;
+
+                    // Check if the checkbox is selected //
+                    Boolean isChecked = (Boolean) tableModel.getValueAt(i, checkboxColumnIndex);
+                    if (isChecked != null && isChecked) {
+                        // Remove the row
+                        tableModel.removeRow(i);
+                    }
+                }
+            }
+        }
 }
 
