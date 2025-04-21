@@ -105,8 +105,8 @@ public class GUI extends JFrame {
 
         // set table column names //
         String[] studentRecordColumns = {"Student Name", "Student ID", "Degree Pathway", "Grade", " "};
-        String[] bookColumns = {"Book Name", "Book ID", "Availability", " "};
-        String[] labEquipColumns = {"Equipment Name", "Equipment ID", "Availability", " "};
+        String[] bookColumns = {"Book Name", "Book Author", "Book ID", "Availability", " "};
+        String[] labEquipColumns = {"Equipment Name", "Equipment ID", "Department", "Availability", " "};
         String[] roomColumns = {"Room Name", "Room Type", "Availability", "Capacity", " "};
         String[] staffRecordColumns = {"Staff Name", "Staff ID", "Office Hours", "Department", " "};
 
