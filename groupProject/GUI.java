@@ -153,9 +153,10 @@ public class GUI extends JFrame {
         //adding ChangeListener to the tabbedPane using Management //
         management.addTabChangeListener(tabbedPane, userInputPanel, cardLayout);
 
-        // actionListeners for buttons //
-        findButton.addActionListener(e -> { management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
 
+        // actionListeners for buttons //
+        findButton.addActionListener(_ -> { management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
+        removeButton.addActionListener(_ ->{ management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
         // Frame Configurations //
         add(splitPane);
         setResizable(false);
