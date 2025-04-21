@@ -90,7 +90,9 @@ public class StaffRecords extends Records{
 
     @Override
     public int generateID() {
+        //creates an ID for new staff
         int newStaffID = (int)(Math.random()* 1000) + 1;
+        //checks if number already exists in the staff List, and generates another number if it does
         while (staff.contains(newStaffID)) {
             newStaffID = (int)(Math.random()* 1000) + 1;
         }

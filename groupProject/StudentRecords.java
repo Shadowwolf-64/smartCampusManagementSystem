@@ -87,8 +87,15 @@ public class StudentRecords extends Records{
 
     }
 
+
     @Override
     public int generateID() {
-        return 0;
+        //creates an ID for new students
+        int newStudentID = (int)(Math.random()* 5000) + 1;
+        //checks if number already exists in the students List, and generates another number if it does
+        while (students.contains(newStudentID)) {
+            newStudentID = (int)(Math.random()* 5000) + 1;
+        }
+        return newStudentID;
     }
 }

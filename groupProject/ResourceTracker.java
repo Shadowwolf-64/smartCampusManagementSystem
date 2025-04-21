@@ -66,7 +66,9 @@ public class ResourceTracker extends Records{
 
     @Override
     public int generateID() {
+        //creates an ID for either a new book or new labEquipment
         int newID = (int)(Math.random()* 10000) + 1;
+        //checks if number already exists in the books or labEquipment Lists, and generates another number if it does
         while (books.contains(newID) || labEquipment.contains(newID)) {
             newID = (int)(Math.random()* 10000) + 1;
         }
