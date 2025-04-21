@@ -22,6 +22,22 @@ public class Management extends JSplitPane {
             }
         });
     }
+
+    //generate an ID for any staff, student, room, or resource
+    public int generateNewID(JTable... tables) {
+        int newID = (int)(Math.random()* 10000) + 1;
+        for(JTable table : tables) {
+            for (int row = 0; row < table.getRowCount(); row++) {
+                for (int col = 0; col < table.getColumnCount(); col++) {
+                    Object cellValue = table.getValueAt(row, col);
+                    while (cellValue != null && cellValue.toString().equalsIgnoreCase(String.valueOf(newID))) {
+                        newID = (int)(Math.random()* 10000) + 1;
+                    }
+                }
+            }
+        }
+        return newID;
+    }
     
     // this might need to be looked at again once we have data to populate the tables //
     public void searchById(JTable... tables) {
