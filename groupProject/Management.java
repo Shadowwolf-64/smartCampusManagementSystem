@@ -78,19 +78,19 @@ public class Management extends JSplitPane {
     public void removeCheckedRow(JTable ... tables) {
         for (JTable table : tables) {
             DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-                // Iterate through rows in reverse order to prevent issues with the index when removing more than 1 row //
-                for (int i = tableModel.getRowCount() - 1; i >= 0; i--) {
-                    // Assumes the checkbox column is the last column
-                    int checkboxColumnIndex = tableModel.getColumnCount() - 1;
+            // Iterate through rows in reverse order to prevent issues with the index when removing more than 1 row //
+            for (int i = tableModel.getRowCount() - 1; i >= 0; i--) {
+                // Assumes the checkbox column is the last column
+                int checkboxColumnIndex = tableModel.getColumnCount() - 1;
 
-                    // Check if the checkbox is selected //
-                    Boolean isChecked = (Boolean) tableModel.getValueAt(i, checkboxColumnIndex);
-                    if (isChecked != null && isChecked) {
-                        // Remove the row
-                        tableModel.removeRow(i);
-                    }
+                // Check if the checkbox is selected //
+                Boolean isChecked = (Boolean) tableModel.getValueAt(i, checkboxColumnIndex);
+                if (isChecked != null && isChecked) {
+                    // Remove the row
+                    tableModel.removeRow(i);
                 }
             }
         }
+    }
 }
 

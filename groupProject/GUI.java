@@ -7,14 +7,7 @@ public class GUI extends JFrame {
 
     public GUI() {
 
-        //creating the class objects
-        StudentRecords studentRecords = new StudentRecords();
-        StaffRecords staffRecords = new StaffRecords();
-        ResourceTracker resourceTracker = new ResourceTracker();
-        RoomScheduler roomScheduler = new RoomScheduler();
 
-        // creating management for changeListener //
-        Management management = new Management();
 
         // JPanels //
         JPanel userInputPanel = new JPanel(new CardLayout());
@@ -130,6 +123,14 @@ public class GUI extends JFrame {
         staffScrollPane.setViewportView(staffRecordTable);
 
 
+        //creating the class objects
+        StaffRecords staffRecords = new StaffRecords();
+        ResourceTracker resourceTracker = new ResourceTracker();
+        RoomScheduler roomScheduler = new RoomScheduler();
+        StudentRecords studentRecords = new StudentRecords(studentRecordModel);
+        // creating management for changeListener //
+        Management management = new Management();
+
 
 
 
@@ -155,6 +156,7 @@ public class GUI extends JFrame {
 
         // actionListeners for buttons //
         findButton.addActionListener(e -> { management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
+        addButton.addActionListener(_ -> {studentRecords.addStudent(infoLabel);});
 
         // Frame Configurations //
         add(splitPane);

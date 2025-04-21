@@ -11,7 +11,7 @@ public class TableModel extends DefaultTableModel {
     //override method to set the data type for each column //
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex == 3 || columnIndex == 4) {
+        if (columnIndex == 4) {
             return Boolean.class; // Sets the "Select" column to boolean
         }
         return String.class;
@@ -20,6 +20,6 @@ public class TableModel extends DefaultTableModel {
     // Override method to make the checkbox column editable //
     @Override
     public boolean isCellEditable(int row, int column) {
-        return column == 3; // Only the "Select" column is editable
+        return column == 4; // Only the "Select" column is editable
     }
 }

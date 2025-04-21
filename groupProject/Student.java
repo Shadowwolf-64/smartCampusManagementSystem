@@ -1,20 +1,22 @@
 package groupProject;
 
+import javax.swing.*;
+
 public class Student {
-	String name;
+	JTextField name;
 	int studentID;
-	String degreePathway;
+	JTextField degreePathway;
 	String[] enrolledModules;
-	int[] grades;
+	JTextField grade;
 	
 	//getters and setters
-	public String getStudentName() {
+	public JTextField getStudentName() {
 		return name;
 	}
 
-	public void setStudentName() {
-		this.name = name;
-	}
+	public void setStudentName(JTextField studentName) {
+		this.name = studentName;
+    }
 
 	public int getStudentID() {
 		return studentID;
@@ -24,13 +26,13 @@ public class Student {
 		this.studentID = studentID;
 	}
 
-	public String getDegreePathway(String degreePathway) {
+	public JTextField getDegreePathway() {
 		return degreePathway;
 	}
 
-	public void setDegreePathway() {
-		this.degreePathway = degreePathway;
-	}
+	public void setDegreePathway(JTextField degreePath) {
+		this.degreePathway = degreePath;
+    }
 
 	public String[] getEnrolledModules() {
 		return enrolledModules;
@@ -40,11 +42,11 @@ public class Student {
 		this.enrolledModules = enrolledModules;
 	}
 
-	public int[] getGrades() {
-		return grades;
+	public JTextField getGrade() {
+		return grade;
 	}
 
-	public void setGrades(int grades) {
-		this.grades = new int[]{grades};
+	public void setGrade(JTextField grade) {
+		this.grade = grade;
 	}
 }
