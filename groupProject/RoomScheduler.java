@@ -13,7 +13,7 @@ public class RoomScheduler extends Records{
         roomSchedulerInputCard.setBorder(blackline);
         //JLabels for the student input fields in the userInputPanel
         JLabel roomName = new JLabel("Room Name:");
-        JLabel roomCapacity = new JLabel("Room Capacity:");
+        JLabel roomCapacity = new JLabel("Room Capacity:  ");
 
         //JTextFields for the above JLabels for userInputPanel
         JTextField name = new JTextField(10);
