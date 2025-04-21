@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class RoomScheduler extends JPanel{
+public class RoomScheduler extends Records{
 
     public void roomScheduler(JPanel roomSchedulerInputCard, GridBagLayout layout, GridBagConstraints gbc) {
         //border and border title creation
@@ -37,5 +37,30 @@ public class RoomScheduler extends JPanel{
         gbc.gridx = 1;
         gbc.gridy = 1;
         roomSchedulerInputCard.add(capacity, gbc);
+    }
+
+    @Override
+    public void find() {
+        
+    }
+
+    @Override
+    public void modify() {
+
+    }
+
+    @Override
+    public void add() {
+
+    }
+
+    @Override
+    public void remove() {
+
+    }
+
+    @Override
+    public int generateID() {
+        return 0;
     }
 }
