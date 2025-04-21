@@ -66,6 +66,10 @@ public class ResourceTracker extends Records{
 
     @Override
     public int generateID() {
-        return 0;
+        int newID = (int)(Math.random()* 10000) + 1;
+        while (books.contains(newID) || labEquipment.contains(newID)) {
+            newID = (int)(Math.random()* 10000) + 1;
+        }
+        return newID;
     }
 }
