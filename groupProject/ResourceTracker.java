@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResourceTracker {
+public class ResourceTracker extends Records{
     //variables
     private final List<Object> books = new ArrayList<>();
     private final List<Object> labEquipment = new ArrayList<>();
@@ -44,4 +44,28 @@ public class ResourceTracker {
         bookingInputCard.add(id, gbc);
     }
 
+    @Override
+    public void find() {
+
+    }
+
+    @Override
+    public void modify() {
+
+    }
+
+    @Override
+    public void add() {
+
+    }
+
+    @Override
+    public void remove() {
+
+    }
+
+    @Override
+    public int generateID() {
+        return 0;
+    }
 }
