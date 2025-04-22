@@ -132,5 +132,12 @@ public class Management extends JSplitPane {
             }
         }
     }
+
+    //public void saveToFile(JTable ... tables) {
+      //  for (JTable table : tables) {
+       //     DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+    //}
+
+
 }
 
