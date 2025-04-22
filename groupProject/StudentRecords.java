@@ -86,8 +86,9 @@ public class StudentRecords extends JPanel{
         String path = pathway.getText();
         String stuID = id.getText();
         String grade = gradeInput.getText();
-        //sets the time limit for displaying error messages when adding tasks
-        int delay = 3500;
+
+        //sets the time limit for displaying error/feedback messages when adding tasks
+        int delay = 4500;
 
         if(Objects.equals(name, "") || Objects.equals(path, "") || Objects.equals(grade, "")) {
             infoLabel.setText("Please fill in all the boxes correctly");
@@ -96,23 +97,43 @@ public class StudentRecords extends JPanel{
             new Timer(delay, taskPerformed).start();
         } else if (id.getText().isEmpty()) {
             stuID = String.valueOf(management.generateNewID());
-            try {
-                studentRecordModel.addRow(new Object[]{name, stuID, path, grade, false});
-                infoLabel.setText("New student added!");
-            }catch (Exception ex) {
-                infoLabel.setText("You fucked up!");
-                throw new RuntimeException(ex);
+            // confirm addition of student //
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this student?", "Confirm addition", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            // adding the row
+            if (confirm == JOptionPane.YES_OPTION) {
+                try {
+                    //adding user input to the table model
+                    studentRecordModel.addRow(new Object[]{name, stuID, path, grade, false});
+                    infoLabel.setText("New student added!"); //confirmation message
+                    //resetting the input fields to empty strings
+                    studentName.setText("");
+                    pathway.setText("");
+                    id.setText("");
+                    gradeInput.setText("");
+                }catch (Exception ex) {
+                    infoLabel.setText("You screwed up!");
+                    throw new RuntimeException(ex);
+                }
             }
         } else {
-            try {
-                studentRecordModel.addRow(new Object[]{name, path, stuID, grade, false});
-                infoLabel.setText("New student added!");
-            }catch (Exception ex) {
-                infoLabel.setText("You screwed up!");
-                throw new RuntimeException(ex);
+            // confirm addition of student //
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this student?", "Confirm addition", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            // adding the row
+            if (confirm == JOptionPane.YES_OPTION) {
+                try {
+                    //adding user input to the table model
+                    studentRecordModel.addRow(new Object[]{name, stuID, path, grade, false});
+                    infoLabel.setText("New student added!"); //confirmation message
+                    //resetting the input fields to empty strings
+                    studentName.setText("");
+                    pathway.setText("");
+                    id.setText("");
+                    gradeInput.setText("");
+                }catch (Exception ex) {
+                    infoLabel.setText("You screwed up!");
+                    throw new RuntimeException(ex);
+                }
             }
         }
-
     }
-
 }
