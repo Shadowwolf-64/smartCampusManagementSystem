@@ -6,7 +6,7 @@ public class LabEquipment {
     private JTextField equipmentName;
     private JTextField equipmentID;
     private JTextField department;
-    private boolean isAvailable = true;
+    private boolean isEquipmentAvailable = true;
 
     public JTextField getEquipmentName() {
         return equipmentName;
@@ -32,11 +32,11 @@ public class LabEquipment {
         this.department = department;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    public boolean isEquipmentAvailable() {
+        return isEquipmentAvailable;
     }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+    public void setEquipmentAvailable(boolean available) {
+        isEquipmentAvailable = available;
     }
 }
