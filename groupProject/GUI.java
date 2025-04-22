@@ -3,6 +3,8 @@ package groupProject;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class GUI extends JFrame {
 
@@ -205,6 +207,19 @@ public class GUI extends JFrame {
         removeButton.addActionListener(_ ->{ management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
         modifyButton.addActionListener(_ ->{ management.modifyCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
         addButton.addActionListener(_ -> {studentRecords.addStudent(infoLabel);});
+        //adding key listeners to the add button to allow key presses instead of using the mouse
+        addButton.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                studentRecords.addStudent(infoLabel);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
 
         // Frame Configurations //
         add(splitPane);
