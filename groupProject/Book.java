@@ -8,7 +8,7 @@ public class Book {
     private JTextField bookName;
     private JTextField bookAuthor;
     private JTextField bookID;
-    private boolean isAvailable = true;
+    private boolean isBookAvailable = true;
 
     // getters and setters //
     public JTextField getBookName() {
@@ -35,11 +35,11 @@ public class Book {
         this.bookID = bookID;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    public boolean isBookAvailable() {
+        return isBookAvailable;
     }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+    public void setBookAvailable(boolean available) {
+        isBookAvailable = available;
     }
 }
