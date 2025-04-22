@@ -162,12 +162,12 @@ public class GUI extends JFrame {
 
 
         // actionListeners for buttons //
-        findButton.addActionListener(_ -> { management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
-        removeButton.addActionListener(_ ->{ management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
-        modifyButton.addActionListener(_ ->{ management.modifyCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
-        addButton.addActionListener(_ -> {studentRecords.addStudent(infoLabel); });
-        saveButton.addActionListener(_ -> {management.saveToFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
-        loadButton.addActionListener(_-> {management.loadFromFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);});
+        findButton.addActionListener(_ -> management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
+        removeButton.addActionListener(_ -> management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
+        modifyButton.addActionListener(_ -> management.modifyCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
+        addButton.addActionListener(_ -> studentRecords.addStudent(infoLabel));
+        saveButton.addActionListener(_ -> management.saveToFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
+        loadButton.addActionListener(_-> management.loadFromFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
 
         //adding key listeners to the buttons to allow key presses instead of using the mouse
         findButton.addKeyListener(new KeyListener() {
