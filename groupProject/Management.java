@@ -144,12 +144,12 @@ public class Management extends JSplitPane {
             // iterate through all tables //
         for (JTable table : tables) {
             // writes the table names //
-            writer.write("\n" + table.getName());
+            writer.write("\n" + table.getName() + "\n");
             // gets the table model to access the data //
             DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 
             //writes column names to file //
-            for (int i = 0; i < tableModel.getColumnCount(); i++) {
+            for (int i = 0; i < tableModel.getColumnCount() - 1; i++) {
                 writer.write(tableModel.getColumnName(i) + "\t");
                 }
                 writer.write("\n");
