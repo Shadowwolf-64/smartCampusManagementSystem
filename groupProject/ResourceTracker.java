@@ -10,6 +10,16 @@ public class ResourceTracker extends JPanel{
     //variables
     private final List<Object> books = new ArrayList<>();
     private final List<Object> labEquipment = new ArrayList<>();
+
+    //methods
+    public boolean checkBookAvailability(boolean isBookAvailable) { 
+        return isBookAvaiable;
+    }
+
+    public boolean checkEquipmentAvailability(boolean isEquipmentAvailable) {
+        return isEquipmentAvailable;
+    }
+    
     //JLabels for the student input fields in the userInputPanel
     JLabel resourceName = new JLabel("Resource Name: ");
     JLabel resourceID = new JLabel("Resource ID:");
