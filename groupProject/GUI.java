@@ -121,11 +121,11 @@ public class GUI extends JFrame {
         JTable staffRecordTable = new JTable(staffRecordModel);
 
         // assign names to tables //
-        studentRecordTable.setName("Student Records");
-        bookTable.setName("Books");
-        labEquipTable.setName("Lab Equipment");
-        roomTable.setName("Rooms");
-        staffRecordTable.setName("Staff Records");
+        studentRecordTable.setName("Student Records Table");
+        bookTable.setName("Books Table");
+        labEquipTable.setName("Lab Equipment Table");
+        roomTable.setName("Rooms Table");
+        staffRecordTable.setName("Staff Records Table");
 
         // adding the tables //
         studentScrollPane.setViewportView(studentRecordTable);
@@ -213,6 +213,7 @@ public class GUI extends JFrame {
         modifyButton.addActionListener(_ ->{ management.modifyCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
         addButton.addActionListener(_ -> {studentRecords.addStudent(infoLabel); });
         saveButton.addActionListener(_ -> {management.saveToFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
+        loadButton.addActionListener(_-> {management.loadFromFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);});
 
         //adding key listeners to the buttons to allow key presses instead of using the mouse
         findButton.addKeyListener(new KeyListener() {
