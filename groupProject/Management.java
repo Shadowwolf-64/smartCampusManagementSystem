@@ -5,10 +5,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Management extends JSplitPane {
 
@@ -164,11 +161,49 @@ public class Management extends JSplitPane {
                 }
             }
 
-            // saved succesfull;y message //
-            infoLabel.setText("Saved Succefully");
+            // saved successfully message //
+            infoLabel.setText("Saved Successfully");
         } catch (IOException ex) {
             //error message if something goes wrong //
             infoLabel.setText("Error saving: " + ex.getMessage());
+        }
+    }
+
+    public void loadFromFile(JLabel infoLabel, String filePath, JTable ... tables) {
+        File fileToLoad = new File(filePath);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileToLoad))) {
+            String line;
+            DefaultTableModel currentTableModel = null;
+
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+
+                //checks if table name matches line //
+                for(JTable table : tables) {
+                    if(line.equalsIgnoreCase(table.getName())) {
+                        currentTableModel = (DefaultTableModel) table.getModel();
+                        currentTableModel.setRowCount(0); // clears the existing rows //
+                        break;
+                    }
+                }
+                //skip empty lines //
+                if(currentTableModel == null || line.isEmpty() || line.contains("\t")) {
+                    continue;
+                }
+
+                // add rows to current table //
+                String[] rowData = line.split("\t");
+                if (currentTableModel != null && rowData.length == currentTableModel.getColumnCount()) {
+                    currentTableModel.addRow(rowData);
+                }
+            }
+
+            //load successful message//
+            infoLabel.setText("Data loaded successfully");
+            } catch (IOException ex) {
+            //Error message //
+            infoLabel.setText("Error loading: " + ex.getMessage());
         }
     }
 }
