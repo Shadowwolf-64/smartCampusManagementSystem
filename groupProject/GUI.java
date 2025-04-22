@@ -117,6 +117,13 @@ public class GUI extends JFrame {
         TableModel staffRecordModel = new TableModel(staffRecordColumns);
         JTable staffRecordTable = new JTable(staffRecordModel);
 
+        // assign names to tables //
+        studentRecordTable.setName("Student Records");
+        bookTable.setName("Books");
+        labEquipTable.setName("Lab Equipment");
+        roomTable.setName("Rooms");
+        staffRecordTable.setName("Staff Records");
+
         // adding the tables //
         studentScrollPane.setViewportView(studentRecordTable);
         booksScrollPane.setViewportView(bookTable);
@@ -207,6 +214,7 @@ public class GUI extends JFrame {
         removeButton.addActionListener(_ ->{ management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
         modifyButton.addActionListener(_ ->{ management.modifyCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
         addButton.addActionListener(_ -> {studentRecords.addStudent(infoLabel);});
+
         //adding key listeners to the add button to allow key presses instead of using the mouse
         addButton.addKeyListener(new KeyListener() {
             @Override

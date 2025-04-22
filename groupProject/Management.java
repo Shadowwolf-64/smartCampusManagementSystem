@@ -5,6 +5,10 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Management extends JSplitPane {
 
@@ -130,6 +134,41 @@ public class Management extends JSplitPane {
                 tableModel.setValueAt(false, i, checkboxColumnIndex);
                 }
             }
+        }
+    }
+
+    public void saveToFile(JLabel infoLabel, String filePath, JTable ... tables) {
+        File fileToSave = new File(filePath);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileToSave))) {
+            // iterate through all tables //
+        for (JTable table : tables) {
+            // writes the table names //
+            writer.write("\n" + table.getName());
+            // gets the table model to access the data //
+            DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+
+            //writes column names to file //
+            for (int i = 0; i < tableModel.getColumnCount(); i++) {
+                writer.write(tableModel.getColumnName(i) + "\t");
+                }
+                writer.write("\n");
+
+            // writes the row to file //
+            for (int i = 0; i < tableModel.getRowCount(); i++) {
+                for (int j = 0; j < tableModel.getColumnCount(); j++) {
+                    Object value = tableModel.getValueAt(i, j);
+                    writer.write((value != null ? value.toString() : "") + "\t");
+                    }
+                    writer.write("\n");
+                }
+            }
+
+            // saved succesfull;y message //
+            infoLabel.setText("Saved Succefully");
+        } catch (IOException ex) {
+            //error message if something goes wrong //
+            infoLabel.setText("Error saving: " + ex.getMessage());
         }
     }
 }
