@@ -189,11 +189,6 @@ public class GUI extends JFrame {
         roomModel.addRow(room3);
 
 
-
-
-
-
-
         //creating a GridBaGLayout and constraints to pass to the different cards
         GridBagLayout layout = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
@@ -220,7 +215,55 @@ public class GUI extends JFrame {
         saveButton.addActionListener(_ -> {management.saveToFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
         loadButton.addActionListener(_-> {management.loadFromFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);});
 
-        //adding key listeners to the add button to allow key presses instead of using the mouse
+        //adding key listeners to the buttons to allow key presses instead of using the mouse
+        findButton.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //defines which key needs to be pressed to activate the button
+                if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+
+        removeButton.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //defines which key needs to be pressed to activate the button
+                if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+
+        modifyButton.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //defines which key needs to be pressed to activate the button
+                if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    management.modifyCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+
         addButton.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -230,6 +273,22 @@ public class GUI extends JFrame {
                 //defines which key needs to be pressed to activate the button
                 if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
                     studentRecords.addStudent(infoLabel);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+
+        saveButton.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //defines which key needs to be pressed to activate the button
+                if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    management.saveToFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);
                 }
             }
 

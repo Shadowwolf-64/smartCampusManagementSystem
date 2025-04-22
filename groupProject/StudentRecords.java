@@ -105,6 +105,9 @@ public class StudentRecords extends JPanel{
                     //adding user input to the table model
                     studentRecordModel.addRow(new Object[]{name, stuID, path, grade, false});
                     infoLabel.setText("New student added!"); //confirmation message
+                    infoLabel.setVisible(true);
+                    ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                    new Timer(delay, taskPerformed).start();
                     //resetting the input fields to empty strings
                     studentName.setText("");
                     pathway.setText("");
@@ -124,6 +127,9 @@ public class StudentRecords extends JPanel{
                     //adding user input to the table model
                     studentRecordModel.addRow(new Object[]{name, stuID, path, grade, false});
                     infoLabel.setText("New student added!"); //confirmation message
+                    infoLabel.setVisible(true);
+                    ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                    new Timer(delay, taskPerformed).start();
                     //resetting the input fields to empty strings
                     studentName.setText("");
                     pathway.setText("");
