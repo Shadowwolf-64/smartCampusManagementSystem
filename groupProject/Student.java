@@ -3,11 +3,11 @@ package groupProject;
 import javax.swing.*;
 
 public class Student {
-	JTextField name;
-	JTextField studentID;
-	JTextField degreePathway;
-	String[] enrolledModules;
-	JTextField grades;
+	private JTextField name;
+	private JTextField studentID;
+	private JTextField degreePathway;
+	private String[] enrolledModules;
+	private JTextField grades;
 	
 	//getters and setters
 	public JTextField getStudentName() {
