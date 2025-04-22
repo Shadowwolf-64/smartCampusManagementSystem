@@ -1,35 +1,37 @@
 package groupProject;
 
+import javax.swing.*;
+
 public class Book {
 
     //variables
-    private String bookName;
-    private String bookAuthor;
-    private int bookID;
+    private JTextField bookName;
+    private JTextField bookAuthor;
+    private JTextField bookID;
     private boolean isAvailable = true;
 
     // getters and setters //
-    public String getBookName() {
+    public JTextField getBookName() {
         return bookName;
     }
 
-    public void setBookName(String bookName) {
+    public void setBookName(JTextField bookName) {
         this.bookName = bookName;
     }
 
-    public String getBookAuthor() {
+    public JTextField getBookAuthor() {
         return bookAuthor;
     }
 
-    public void setBookAuthor(String bookAuthor) {
+    public void setBookAuthor(JTextField bookAuthor) {
         this.bookAuthor = bookAuthor;
     }
 
-    public int getBookID() {
+    public JTextField getBookID() {
         return bookID;
     }
 
-    public void setBookID(int bookID) {
+    public void setBookID(JTextField bookID) {
         this.bookID = bookID;
     }
 

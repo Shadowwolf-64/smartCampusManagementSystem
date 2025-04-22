@@ -4,6 +4,7 @@ Student Name	Student ID	Degree Pathway	Grade
 John Doe	12345	Computer Science	A	false	
 Jane Smith	67890	Mathematics	B	false	
 Alice Johnson	11223	Physics	A+	false	
+Roo	1285	Obedience	B+	false	
 
 Books
 Book Name	Book Author	Book ID	Availability	
