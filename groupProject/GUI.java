@@ -38,6 +38,7 @@ public class GUI extends JFrame {
         JButton modifyButton = new JButton("Modify");
         JButton saveButton = new JButton("Save");
         JButton loadButton = new JButton("Load");
+        JButton reserveButton = new JButton("Book");
 
         // button size configuration //
         findButton.setPreferredSize(new Dimension(85, 20));
@@ -46,6 +47,8 @@ public class GUI extends JFrame {
         modifyButton.setPreferredSize(new Dimension(85, 20));
         saveButton.setPreferredSize(new Dimension(85, 20));
         loadButton.setPreferredSize(new Dimension(85, 20));
+        reserveButton.setPreferredSize(new Dimension(85, 20));
+
 
         // JLabels for feedbackPanel//
         JLabel feedbackLabel = new JLabel("Feedback");
@@ -89,6 +92,7 @@ public class GUI extends JFrame {
         buttonPanel.add(modifyButton);
         buttonPanel.add(saveButton);
         buttonPanel.add(loadButton);
+        buttonPanel.add(reserveButton);
         feedbackPanel.add(feedbackTopPanel);
         feedbackPanel.add(feedbackBottomPanel);
         feedbackTopPanel.add(feedbackLabel);
@@ -215,7 +219,6 @@ public class GUI extends JFrame {
         addButton.addActionListener(_ -> {studentRecords.addStudent(infoLabel); });
         saveButton.addActionListener(_ -> {management.saveToFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
 
-
         //adding key listeners to the add button to allow key presses instead of using the mouse
         addButton.addKeyListener(new KeyListener() {
             @Override
@@ -232,6 +235,16 @@ public class GUI extends JFrame {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
+
+        //setting tool tips for the buttons
+        findButton.setToolTipText("Find a student, staff member, room, or resource using ID numbers");
+        removeButton.setToolTipText("Remove an item or person from a table by checking the tick box and pressing this button");
+        saveButton.setToolTipText("Save data to the system file");
+        modifyButton.setToolTipText("Modify an entry by ticking the check box of the one you need to alter and then click this button");
+        loadButton.setToolTipText("Load the data from the system file");
+        addButton.setToolTipText("Add data from the input boxes into the correct table");
+        reserveButton.setToolTipText("Reserve a room, book or lab equipment");
+
 
         // Frame Configurations //
         add(splitPane);
