@@ -1,32 +1,34 @@
 package groupProject;
 
+import javax.swing.*;
+
 public class LabEquipment {
-    private String equipmentName;
-    private int equipmentID;
-    private String department;
+    private JTextField equipmentName;
+    private JTextField equipmentID;
+    private JTextField department;
     private boolean isAvailable = true;
 
-    public String getEquipmentName() {
+    public JTextField getEquipmentName() {
         return equipmentName;
     }
 
-    public void setEquipmentName(String equipmentName) {
+    public void setEquipmentName(JTextField equipmentName) {
         this.equipmentName = equipmentName;
     }
 
-    public int getEquipmentID() {
+    public JTextField getEquipmentID() {
         return equipmentID;
     }
 
-    public void setEquipmentID(int equipmentID) {
+    public void setEquipmentID(JTextField equipmentID) {
         this.equipmentID = equipmentID;
     }
 
-    public String getDepartment() {
+    public JTextField getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(JTextField department) {
         this.department = department;
     }
 
