@@ -146,14 +146,14 @@ public class Management extends JSplitPane {
             DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 
             //writes column names to file //
-            for (int i = 0; i < tableModel.getColumnCount() - 1; i++) {
+            for (int i = 0; i < tableModel.getColumnCount(); i++) {
                 writer.write(tableModel.getColumnName(i) + "\t");
                 }
                 writer.write("\n");
 
             // writes the row to file //
             for (int i = 0; i < tableModel.getRowCount(); i++) {
-                for (int j = 0; j < tableModel.getColumnCount(); j++) {
+                for (int j = 0; j < tableModel.getColumnCount() - 1; j++) {
                     Object value = tableModel.getValueAt(i, j);
                     writer.write((value != null ? value.toString() : "") + "\t");
                     }
@@ -179,6 +179,7 @@ public class Management extends JSplitPane {
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
 
+
                 //checks if table name matches line //
                 for(JTable table : tables) {
                     if(line.equalsIgnoreCase(table.getName())) {
@@ -188,14 +189,23 @@ public class Management extends JSplitPane {
                     }
                 }
                 //skip empty lines //
-                if(currentTableModel == null || line.isEmpty() || line.contains("\t")) {
+                if(currentTableModel == null || line.isEmpty() || line.contains("Name") || line.contains("Table")) {
                     continue;
                 }
 
                 // add rows to current table //
                 String[] rowData = line.split("\t");
-                if (currentTableModel != null && rowData.length == currentTableModel.getColumnCount()) {
-                    currentTableModel.addRow(rowData);
+                if (currentTableModel != null) {
+                    //adds placeholder for checkbox column //
+                    Object[] rowWithCheckbox = new Object[currentTableModel.getColumnCount()];
+                    for (int i = 0; i < rowData.length; i++) {
+                        rowWithCheckbox[i] = rowData[i];
+                    }
+                    //set checkbox to false //
+                    if (rowData.length < currentTableModel.getColumnCount()) {
+                        rowWithCheckbox[currentTableModel.getColumnCount() - 1] = false;
+                    }
+                    currentTableModel.addRow(rowWithCheckbox);
                 }
             }
 

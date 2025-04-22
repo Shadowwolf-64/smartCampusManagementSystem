@@ -1,31 +1,30 @@
 
-Student Records
-Student Name	Student ID	Degree Pathway	Grade	
-John Doe	12345	Computer Science	A	false	
-Jane Smith	67890	Mathematics	B	false	
-Alice Johnson	11223	Physics	A+	false	
-Roo	1285	Obedience	B+	false	
+Student Records Table
+Student Name	Student ID	Degree Pathway	Grade	 	
+John Doe	12345	Computer Science	A	
+Jane Smith	67890	Mathematics	B	
+Alice Johnson	11223	Physics	A+	
 
-Books
-Book Name	Book Author	Book ID	Availability	
-Introduction to Java	James Gosling	001	Available	false	
-Data Structures	Mark Allen Weiss	002	Checked Out	false	
-Operating Systems	Abraham Silberschatz	003	Available	false	
+Books Table
+Book Name	Book Author	Book ID	Availability	 	
+Introduction to Java	James Gosling	001	Available	
+Data Structures	Mark Allen Weiss	002	Checked Out	
+Operating Systems	Abraham Silberschatz	003	Available	
 
-Lab Equipment
-Equipment Name	Equipment ID	Department	Availability	
-Microscope	E001	Biology	Available	false	
-Oscilloscope	E002	Physics	In Use	false	
-3D Printer	E003	Engineering	Available	false	
+Lab Equipment Table
+Equipment Name	Equipment ID	Department	Availability	 	
+Microscope	E001	Biology	Available	
+Oscilloscope	E002	Physics	In Use	
+3D Printer	E003	Engineering	Available	
 
-Rooms
-Room Name	Room Type	Availability	Capacity	
-Room 101	Lecture Hall	Available	50	false	
-Lab A	Laboratory	In Use	30	false	
-Conference Room	Meeting Room	Available	20	false	
+Rooms Table
+Room Name	Room Type	Availability	Capacity	 	
+Room 101	Lecture Hall	Available	50	
+Lab A	Laboratory	In Use	30	
+Conference Room	Meeting Room	Available	20	
 
-Staff Records
-Staff Name	Staff ID	Office Hours	Department	
-Dr. Brown	54321	9 AM - 5 PM	Physics	false	
-Prof. Green	98765	10 AM - 6 PM	Chemistry	false	
-Dr. White	19283	8 AM - 4 PM	Biology	false	
+Staff Records Table
+Staff Name	Staff ID	Office Hours	Department	 	
+Dr. Brown	54321	9 AM - 5 PM	Physics	
+Prof. Green	98765	10 AM - 6 PM	Chemistry	
+Dr. White	19283	8 AM - 4 PM	Biology	
