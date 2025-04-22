@@ -1,7 +1,6 @@
 package groupProject;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -213,7 +212,9 @@ public class GUI extends JFrame {
         findButton.addActionListener(_ -> { management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
         removeButton.addActionListener(_ ->{ management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
         modifyButton.addActionListener(_ ->{ management.modifyCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
-        addButton.addActionListener(_ -> {studentRecords.addStudent(infoLabel);});
+        addButton.addActionListener(_ -> {studentRecords.addStudent(infoLabel); });
+        saveButton.addActionListener(_ -> {management.saveToFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable); });
+
 
         //adding key listeners to the add button to allow key presses instead of using the mouse
         addButton.addKeyListener(new KeyListener() {
