@@ -214,7 +214,10 @@ public class GUI extends JFrame {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                studentRecords.addStudent(infoLabel);
+                //defines which key needs to be pressed to activate the button
+                if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    studentRecords.addStudent(infoLabel);
+                }
             }
 
             @Override
