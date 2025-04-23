@@ -136,7 +136,7 @@ public class GUI extends JFrame {
 
         //creating the class objects
         StudentRecords studentRecords = new StudentRecords(studentRecordModel);
-        StaffRecords staffRecords = new StaffRecords();
+        StaffRecords staffRecords = new StaffRecords(staffRecordModel);
         ResourceTracker resourceTracker = new ResourceTracker();
         RoomScheduler roomScheduler = new RoomScheduler();
 
@@ -158,14 +158,21 @@ public class GUI extends JFrame {
         CardLayout cardLayout = (CardLayout) userInputPanel.getLayout();
 
         //adding ChangeListener to the tabbedPane using Management //
-        management.addTabChangeListener(tabbedPane, userInputPanel, cardLayout);
+        management.addTabChangeListener(tabbedPane, userInputPanel, cardLayout, infoLabel, addButton);
 
 
         // actionListeners for buttons //
         findButton.addActionListener(_ -> management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         removeButton.addActionListener(_ -> management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         modifyButton.addActionListener(_ -> management.modifyCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
-        addButton.addActionListener(_ -> studentRecords.addStudent(infoLabel));
+        addButton.addActionListener(_ -> {
+            if(tabbedPane.getSelectedIndex() == 0) {
+                studentRecords.addStudent(infoLabel);
+            }else if (tabbedPane.getSelectedIndex() == 4) {
+                staffRecords.addStaff(infoLabel);
+            }
+
+        });
         saveButton.addActionListener(_ -> management.saveToFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         loadButton.addActionListener(_-> management.loadFromFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
 
