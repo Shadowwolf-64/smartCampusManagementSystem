@@ -1,25 +1,22 @@
 package groupProject;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.Objects;
 
 public class Management extends JSplitPane {
 
-    public void addTabChangeListener(JTabbedPane tabbedPane, JPanel userInputPanel, CardLayout cardLayout, JLabel infoLabel, JButton addButton) {
-        tabbedPane.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                int selectedIndex = tabbedPane.getSelectedIndex();
-                switch (selectedIndex) {
-                    case 0 -> cardLayout.show(userInputPanel, "Student");
-                    case 1 -> cardLayout.show(userInputPanel, "Rooms");
-                    case 2, 3 -> cardLayout.show(userInputPanel, "Booking");
-                    case 4 -> cardLayout.show(userInputPanel, "Staff");
-                }
+    public void addTabChangeListener(JTabbedPane tabbedPane, JPanel userInputPanel, CardLayout cardLayout) {
+        tabbedPane.addChangeListener(e -> {
+            int selectedIndex = tabbedPane.getSelectedIndex();
+            switch (selectedIndex) {
+                case 0 -> cardLayout.show(userInputPanel, "Student");
+                case 1 -> cardLayout.show(userInputPanel, "Rooms");
+                case 2, 3 -> cardLayout.show(userInputPanel, "Booking");
+                case 4 -> cardLayout.show(userInputPanel, "Staff");
             }
         });
     }
@@ -213,6 +210,46 @@ public class Management extends JSplitPane {
         } catch (IOException ex) {
             //Error message //
             infoLabel.setText("Error loading: " + ex.getMessage());
+        }
+    }
+
+    public void reserving(JLabel infoLabel, JTable... tables) {
+        //sets the time limit for displaying error/feedback messages when adding tasks
+        int delay = 4500;
+        for (JTable table : tables) {
+            DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+            // Iterate through rows in reverse order to prevent issues with the index
+            for (int i = tableModel.getRowCount() - 1; i >= 0; i--) {
+                // Assumes the checkbox column is the last column
+                int checkboxColumnIndex = tableModel.getColumnCount() - 1;
+
+                // Check if the checkbox is selected
+                Boolean isChecked = (Boolean) tableModel.getValueAt(i, checkboxColumnIndex);
+                if (isChecked != null && isChecked) {
+                    for (int col = 3; col < checkboxColumnIndex; col++) {
+                        Object currentValue = tableModel.getValueAt(i, col);
+                        String availabilityChange1 = "In Use";
+                        if (Objects.equals(String.valueOf(currentValue), "Available")) {
+                            try {
+                                int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to make this reservation?", "Confirm reservation", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                                // Update the row
+                                if (confirm == JOptionPane.YES_OPTION) {
+                                    tableModel.setValueAt(availabilityChange1, i, col);
+                                    // uncheck the box after changes are made
+                                    tableModel.setValueAt(false, i, checkboxColumnIndex);
+                                }
+                            }catch (Exception ex) {
+                                infoLabel.setText("You screwed up!");
+                                throw new RuntimeException(ex);
+                            }
+                        }else {
+                            JOptionPane.showMessageDialog(null, "Unable to reserve, already in use", "Reservation failure", JOptionPane.INFORMATION_MESSAGE);
+                            // uncheck the box after changes are made
+                            tableModel.setValueAt(false, i, checkboxColumnIndex);
+                        }
+                    }
+                }
+            }
         }
     }
 }

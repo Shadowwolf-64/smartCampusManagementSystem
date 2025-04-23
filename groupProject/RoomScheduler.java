@@ -57,18 +57,18 @@ public class RoomScheduler extends JPanel{
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
         gbc.gridy = 2;
-        roomSchedulerInputCard.add(availabilityLabel, gbc);
+        roomSchedulerInputCard.add(roomCapacity, gbc);
         gbc.gridx = 1;
         gbc.gridy = 2;
-        roomSchedulerInputCard.add(availability, gbc);
+        roomSchedulerInputCard.add(capacity, gbc);
 
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
         gbc.gridy = 3;
-        roomSchedulerInputCard.add(roomCapacity, gbc);
+        roomSchedulerInputCard.add(availabilityLabel, gbc);
         gbc.gridx = 1;
         gbc.gridy = 3;
-        roomSchedulerInputCard.add(capacity, gbc);
+        roomSchedulerInputCard.add(availability, gbc);
 
         room.setRoomName(name);
         room.setRoomCapacity(capacity);
@@ -84,16 +84,33 @@ public class RoomScheduler extends JPanel{
 
         int delay = 4500;
 
-        if(Objects.equals(roomName, "") || Objects.equals(cap, "") || Objects.equals(available, "") || Objects.equals(type, "")) {
+        if(Objects.equals(roomName, "") || Objects.equals(cap, "") || Objects.equals(type, "")) {
             infoLabel.setText("Please fill in all the boxes correctly");
             infoLabel.setVisible(true);
             ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
             new Timer(delay, taskPerformed).start();
-        }else if (!Objects.equals(available, "Available")) {
-            infoLabel.setText("Please fill in the room availability as Available!");
-            infoLabel.setVisible(true);
-            ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
-            new Timer(delay, taskPerformed).start();
+        }else if (!Objects.equals(String.valueOf(available), "Available") || Objects.equals(available, "")) {
+            // confirm addition of new room //
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this room?", "Confirm addition", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            // adding the row
+            if (confirm == JOptionPane.YES_OPTION) {
+                try {
+                    //adding user input to the table model
+                    roomModel.addRow(new Object[]{roomName, type, cap, "Available", false});
+                    infoLabel.setText("New room added!"); //confirmation message
+                    infoLabel.setVisible(true);
+                    ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                    new Timer(delay, taskPerformed).start();
+                    //resetting the input fields to empty strings
+                    name.setText("");
+                    capacity.setText("");
+                    availability.setText("");
+                    roomType.setText("");
+                }catch (Exception ex) {
+                    infoLabel.setText("You screwed up!");
+                    throw new RuntimeException(ex);
+                }
+            }
         } else {
             // confirm addition of new room //
             int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this room?", "Confirm addition", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
@@ -101,7 +118,7 @@ public class RoomScheduler extends JPanel{
             if (confirm == JOptionPane.YES_OPTION) {
                 try {
                     //adding user input to the table model
-                    roomModel.addRow(new Object[]{roomName, type, available, cap, false});
+                    roomModel.addRow(new Object[]{roomName, type, cap, "Available", false});
                     infoLabel.setText("New room added!"); //confirmation message
                     infoLabel.setVisible(true);
                     ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
