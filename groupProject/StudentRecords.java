@@ -30,7 +30,7 @@ public class StudentRecords extends JPanel{
     JTextField gradeInput = new JTextField(10);
 
 
-
+    //constructor
     public StudentRecords(TableModel studentRecordModel) {
         this.studentRecordModel = studentRecordModel;
     }

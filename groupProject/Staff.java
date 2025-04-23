@@ -1,42 +1,44 @@
 package groupProject;
 
+import javax.swing.*;
+
 public class Staff {
     //variables
-    private String staffName;
-    private int staffID;
-    private String department;
-    private String officeHours;
+    private JTextField staffName;
+    private JTextField staffID;
+    private JTextField department;
+    private JTextField officeHours;
 
     //getters and setters
-    public String getStaffName() {
+    public JTextField getStaffName() {
         return staffName;
     }
 
-    public void setStaffName(String staffName) {
+    public void setStaffName(JTextField staffName) {
         this.staffName = staffName;
     }
 
-    public int getStaffID() {
+    public JTextField getStaffID() {
         return staffID;
     }
 
-    public void setStaffID(int staffID) {
+    public void setStaffID(JTextField staffID) {
         this.staffID = staffID;
     }
 
-    public String getDepartment() {
+    public JTextField getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(JTextField department) {
         this.department = department;
     }
 
-    public String getOfficeHours() {
+    public JTextField getOfficeHours() {
         return officeHours;
     }
 
-    public void setOfficeHours(String officeHours) {
+    public void setOfficeHours(JTextField officeHours) {
         this.officeHours = officeHours;
     }
 }

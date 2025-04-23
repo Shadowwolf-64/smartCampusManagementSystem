@@ -9,7 +9,7 @@ import java.io.*;
 
 public class Management extends JSplitPane {
 
-    public void addTabChangeListener(JTabbedPane tabbedPane, JPanel userInputPanel, CardLayout cardLayout) {
+    public void addTabChangeListener(JTabbedPane tabbedPane, JPanel userInputPanel, CardLayout cardLayout, JLabel infoLabel, JButton addButton) {
         tabbedPane.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -19,7 +19,6 @@ public class Management extends JSplitPane {
                     case 1 -> cardLayout.show(userInputPanel, "Rooms");
                     case 2, 3 -> cardLayout.show(userInputPanel, "Booking");
                     case 4 -> cardLayout.show(userInputPanel, "Staff");
-
                 }
             }
         });
