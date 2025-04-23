@@ -38,7 +38,7 @@ public class GUI extends JFrame {
         JButton modifyButton = new JButton("Modify");
         JButton saveButton = new JButton("Save");
         JButton loadButton = new JButton("Load");
-        JButton reserveButton = new JButton("Book");
+        JButton reserveButton = new JButton("Reserve");
 
         // button size configuration //
         findButton.setPreferredSize(new Dimension(85, 20));
@@ -105,7 +105,7 @@ public class GUI extends JFrame {
         String[] studentRecordColumns = {"Student Name", "Student ID", "Degree Pathway", "Grade", " "};
         String[] bookColumns = {"Book Name", "Book Author", "Book ID", "Availability", " "};
         String[] labEquipColumns = {"Equipment Name", "Equipment ID", "Department", "Availability", " "};
-        String[] roomColumns = {"Room Name", "Room Type", "Availability", "Capacity", " "};
+        String[] roomColumns = {"Room Name", "Room Type",  "Capacity", "Availability", " "};
         String[] staffRecordColumns = {"Staff Name", "Staff ID", "Office Hours", "Department", " "};
 
         // tables //
@@ -158,7 +158,7 @@ public class GUI extends JFrame {
         CardLayout cardLayout = (CardLayout) userInputPanel.getLayout();
 
         //adding ChangeListener to the tabbedPane using Management //
-        management.addTabChangeListener(tabbedPane, userInputPanel, cardLayout, infoLabel, addButton);
+        management.addTabChangeListener(tabbedPane, userInputPanel, cardLayout);
 
 
         // actionListeners for buttons //
@@ -182,6 +182,7 @@ public class GUI extends JFrame {
         });
         saveButton.addActionListener(_ -> management.saveToFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         loadButton.addActionListener(_-> management.loadFromFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
+        reserveButton.addActionListener(_ ->{management.reserving(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);});
 
         //adding key listeners to the buttons to allow key presses instead of using the mouse
         findButton.addKeyListener(new KeyListener() {

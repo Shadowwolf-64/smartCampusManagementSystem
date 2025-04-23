@@ -10,19 +10,19 @@ Books Table
 Book Name	Book Author	Book ID	Availability	 	
 Introduction to Java	James Gosling	001	Available	
 Data Structures	Mark Allen Weiss	002	Checked Out	
-Operating Systems	Abraham Silberschatz	003	Available	
+Operating Systems	Abraham Silberschatz	003	In Use	
 
 Lab Equipment Table
 Equipment Name	Equipment ID	Department	Availability	 	
 Microscope	E001	Biology	Available	
 Oscilloscope	E002	Physics	In Use	
-3D Printer	E003	Engineering	Available	
+3D Printer	E003	Engineering	In Use	
 
 Rooms Table
-Room Name	Room Type	Availability	Capacity	 	
-Room 101	Lecture Hall	Available	50	
-Lab A	Laboratory	In Use	30	
-Conference Room	Meeting Room	Available	20	
+Room Name	Room Type	Capacity	Availability	 	
+Room 101	Lecture Hall	150	Available	
+Lab A	Laboratory	30	In Use	
+Conference Room	Meeting Room	20	In Use	
 
 Staff Records Table
 Staff Name	Staff ID	Office Hours	Department	 	

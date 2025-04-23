@@ -87,16 +87,34 @@ public class ResourceTracker extends JPanel{
         //sets the time limit for displaying error/feedback messages when adding book
         int delay = 4500;
 
-        if(Objects.equals(bookname, "") || Objects.equals(available, "") || Objects.equals(deptOrAuth, "")) {
+        if(Objects.equals(bookname, "") || Objects.equals(deptOrAuth, "")) {
             infoLabel.setText("Please fill in all the boxes correctly");
             infoLabel.setVisible(true);
             ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
             new Timer(delay, taskPerformed).start();
-        }else if (!Objects.equals(available, "Available")) {
-            infoLabel.setText("Please fill in the resource availability as Available!");
-            infoLabel.setVisible(true);
-            ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
-            new Timer(delay, taskPerformed).start();
+        }else if (!Objects.equals(String.valueOf(available), "Available") || Objects.equals(available, "") && resId.getText().isEmpty()) {
+            bookID = String.valueOf(management.generateNewID());
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this Book?", "Confirm addition", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            // adding the row
+            if (confirm == JOptionPane.YES_OPTION) {
+                try {
+                    //adding user input to the table model
+                    bookModel.addRow(new Object[]{bookname, deptOrAuth, bookID, "Available", false});
+                    infoLabel.setText("New book added!"); //confirmation message
+                    infoLabel.setVisible(true);
+                    ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                    new Timer(delay, taskPerformed).start();
+                    //resetting the input fields to empty strings
+                    name.setText("");
+                    departmentOrAuthor.setText("");
+                    resId.setText("");
+                    availability.setText("");
+                }catch (Exception ex) {
+                    infoLabel.setText("You screwed up!");
+                    throw new RuntimeException(ex);
+                }
+            }
+
         }else if (resId.getText().isEmpty()) {
             bookID = String.valueOf(management.generateNewID());
             // confirm addition of book //
@@ -154,19 +172,37 @@ public class ResourceTracker extends JPanel{
         //sets the time limit for displaying error/feedback messages when adding resources
         int delay = 4500;
 
-        if(Objects.equals(equipName, "") || Objects.equals(available, "") || Objects.equals(deptOrAuth, "")) {
+        if(Objects.equals(equipName, "") || Objects.equals(deptOrAuth, "")) {
             infoLabel.setText("Please fill in all the boxes correctly");
             infoLabel.setVisible(true);
             ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
             new Timer(delay, taskPerformed).start();
-        }else if (!Objects.equals(available, "Available")) {
-            infoLabel.setText("Please fill in the resource availability as Available!");
-            infoLabel.setVisible(true);
-            ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
-            new Timer(delay, taskPerformed).start();
+        }else if (!Objects.equals(String.valueOf(available), "Available") || Objects.equals(available, "") && resId.getText().isEmpty()) {
+            equipID = String.valueOf(management.generateNewID());
+            // confirm addition of lab equipment
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this lab equipment?", "Confirm addition", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            // adding the row
+            if (confirm == JOptionPane.YES_OPTION) {
+                try {
+                    //adding user input to the table model
+                    labEquipModel.addRow(new Object[]{equipName, deptOrAuth, equipID, available, false});
+                    infoLabel.setText("New lab equipment added!"); //confirmation message
+                    infoLabel.setVisible(true);
+                    ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                    new Timer(delay, taskPerformed).start();
+                    //resetting the input fields to empty strings
+                    name.setText("");
+                    departmentOrAuthor.setText("");
+                    resId.setText("");
+                    availability.setText("");
+                }catch (Exception ex) {
+                    infoLabel.setText("You screwed up!");
+                    throw new RuntimeException(ex);
+                }
+            }
         } else if (resId.getText().isEmpty()) {
             equipID = String.valueOf(management.generateNewID());
-            // confirm addition of lab equipment //
+            // confirm addition of lab equipment
             int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this lab equipment?", "Confirm addition", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             // adding the row
             if (confirm == JOptionPane.YES_OPTION) {
