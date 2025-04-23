@@ -88,7 +88,7 @@ public class StudentRecords extends JPanel{
         String grade = gradeInput.getText();
 
         //sets the time limit for displaying error/feedback messages when adding tasks
-        int delay = 4500;
+        int delay = 5000;
 
         if(Objects.equals(name, "") || Objects.equals(path, "") || Objects.equals(grade, "")) {
             infoLabel.setText("Please fill in all the boxes correctly");

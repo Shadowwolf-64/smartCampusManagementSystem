@@ -9,8 +9,8 @@ Roo	1286	Obedience	B+
 Books Table
 Book Name	Book Author	Book ID	Availability	 	
 Introduction to Java	James Gosling	001	Available	
-Data Structures	Mark Allen Weiss	002	Checked Out	
-Operating Systems	Abraham Silberschatz	003	In Use	
+Data Structures	Mark Allen Weiss	002	Available	
+Operating Systems	Abraham Silberschatz	003	Available	
 
 Lab Equipment Table
 Equipment Name	Equipment ID	Department	Availability	 	

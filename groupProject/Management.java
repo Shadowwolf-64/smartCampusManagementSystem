@@ -215,7 +215,7 @@ public class Management extends JSplitPane {
 
     public void reserving(JLabel infoLabel, JTable... tables) {
         //sets the time limit for displaying error/feedback messages when adding tasks
-        int delay = 4500;
+        int delay = 5000;
         for (JTable table : tables) {
             DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
             // Iterate through rows in reverse order to prevent issues with the index
@@ -237,6 +237,10 @@ public class Management extends JSplitPane {
                                     tableModel.setValueAt(availabilityChange1, i, col);
                                     // uncheck the box after changes are made
                                     tableModel.setValueAt(false, i, checkboxColumnIndex);
+                                    infoLabel.setText("Reservation successful!"); //confirmation message
+                                    infoLabel.setVisible(true);
+                                    ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                                    new Timer(delay, taskPerformed).start();
                                 }
                             }catch (Exception ex) {
                                 infoLabel.setText("You screwed up!");
@@ -244,6 +248,50 @@ public class Management extends JSplitPane {
                             }
                         }else {
                             JOptionPane.showMessageDialog(null, "Unable to reserve, already in use", "Reservation failure", JOptionPane.INFORMATION_MESSAGE);
+                            // uncheck the box after changes are made
+                            tableModel.setValueAt(false, i, checkboxColumnIndex);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void unreserve(JLabel infoLabel, JTable... tables) {
+        //sets the time limit for displaying error/feedback messages when adding tasks
+        int delay = 5000;
+        for (JTable table : tables) {
+            DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+            // Iterate through rows in reverse order to prevent issues with the index
+            for (int i = tableModel.getRowCount() - 1; i >= 0; i--) {
+                // Assumes the checkbox column is the last column
+                int checkboxColumnIndex = tableModel.getColumnCount() - 1;
+
+                // Check if the checkbox is selected
+                Boolean isChecked = (Boolean) tableModel.getValueAt(i, checkboxColumnIndex);
+                if (isChecked != null && isChecked) {
+                    for (int col = 3; col < checkboxColumnIndex; col++) {
+                        Object currentValue = tableModel.getValueAt(i, col);
+                        String availabilityChange1 = "Available";
+                        if (Objects.equals(String.valueOf(currentValue), "In Use")) {
+                            try {
+                                int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to remove this reservation?", "Confirm reservation removal", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                                // Update the row
+                                if (confirm == JOptionPane.YES_OPTION) {
+                                    tableModel.setValueAt(availabilityChange1, i, col);
+                                    // uncheck the box after changes are made
+                                    tableModel.setValueAt(false, i, checkboxColumnIndex);
+                                    infoLabel.setText("Reservation successfully removed!"); //confirmation message
+                                    infoLabel.setVisible(true);
+                                    ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                                    new Timer(delay, taskPerformed).start();
+                                }
+                            }catch (Exception ex) {
+                                infoLabel.setText("You screwed up!");
+                                throw new RuntimeException(ex);
+                            }
+                        }else {
+                            JOptionPane.showMessageDialog(null, "Unable to remove reservation due to being available", "Reservation removal failure", JOptionPane.INFORMATION_MESSAGE);
                             // uncheck the box after changes are made
                             tableModel.setValueAt(false, i, checkboxColumnIndex);
                         }
