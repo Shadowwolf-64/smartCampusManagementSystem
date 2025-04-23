@@ -138,7 +138,7 @@ public class GUI extends JFrame {
         StudentRecords studentRecords = new StudentRecords(studentRecordModel);
         StaffRecords staffRecords = new StaffRecords(staffRecordModel);
         ResourceTracker resourceTracker = new ResourceTracker();
-        RoomScheduler roomScheduler = new RoomScheduler();
+        RoomScheduler roomScheduler = new RoomScheduler(roomModel);
 
         // creating management for changeListener //
         Management management = new Management();
@@ -169,6 +169,8 @@ public class GUI extends JFrame {
             //deciding which add method should be implemented based on the current tabbedPane by using the value int of the getSelectedIndex
             if(tabbedPane.getSelectedIndex() == 0) {
                 studentRecords.addStudent(infoLabel);
+            }else if (tabbedPane.getSelectedIndex() == 1) {
+                roomScheduler.addRoom(infoLabel);
             }else if (tabbedPane.getSelectedIndex() == 4) {
                 staffRecords.addStaff(infoLabel);
             }
