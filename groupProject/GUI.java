@@ -39,6 +39,7 @@ public class GUI extends JFrame {
         JButton saveButton = new JButton("Save");
         JButton loadButton = new JButton("Load");
         JButton reserveButton = new JButton("Reserve");
+        JButton unreserveButton = new JButton("Remove Reservation");
 
         // button size configuration //
         findButton.setPreferredSize(new Dimension(85, 20));
@@ -48,6 +49,7 @@ public class GUI extends JFrame {
         saveButton.setPreferredSize(new Dimension(85, 20));
         loadButton.setPreferredSize(new Dimension(85, 20));
         reserveButton.setPreferredSize(new Dimension(85, 20));
+        unreserveButton.setPreferredSize(new Dimension(170, 20));
 
 
         // JLabels for feedbackPanel//
@@ -93,6 +95,7 @@ public class GUI extends JFrame {
         buttonPanel.add(saveButton);
         buttonPanel.add(loadButton);
         buttonPanel.add(reserveButton);
+        buttonPanel.add(unreserveButton);
         feedbackPanel.add(feedbackTopPanel);
         feedbackPanel.add(feedbackBottomPanel);
         feedbackTopPanel.add(feedbackLabel);
@@ -182,7 +185,8 @@ public class GUI extends JFrame {
         });
         saveButton.addActionListener(_ -> management.saveToFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         loadButton.addActionListener(_-> management.loadFromFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
-        reserveButton.addActionListener(_ ->{management.reserving(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);});
+        reserveButton.addActionListener(_ -> management.reserving(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
+        unreserveButton.addActionListener(_ -> management.unreserve(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
 
         //adding key listeners to the buttons to allow key presses instead of using the mouse
         findButton.addKeyListener(new KeyListener() {
@@ -284,7 +288,23 @@ public class GUI extends JFrame {
             public void keyPressed(KeyEvent e) {
                 //defines which key needs to be pressed to activate the button
                 if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    reserveButton.addActionListener(_ ->{management.reserving(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);});
+                    reserveButton.addActionListener(_ -> management.reserving(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+
+        unreserveButton.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //defines which key needs to be pressed to activate the button
+                if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    unreserveButton.addActionListener(_ -> management.unreserve(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
                 }
             }
 
@@ -300,6 +320,7 @@ public class GUI extends JFrame {
         loadButton.setToolTipText("Load the data from the system file");
         addButton.setToolTipText("Add data from the input boxes into the correct table");
         reserveButton.setToolTipText("Reserve a room, book or lab equipment");
+        unreserveButton.setToolTipText("Remove the reservation from a room or resource");
 
 
         // Frame Configurations //
