@@ -89,8 +89,8 @@ public class RoomScheduler extends JPanel{
             infoLabel.setVisible(true);
             ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
             new Timer(delay, taskPerformed).start();
-        }else if (!Objects.equals(available, "Available") || !Objects.equals(available, "In Use")) {
-            infoLabel.setText("Please fill in the room availability as either Available or In Use!");
+        }else if (!Objects.equals(available, "Available")) {
+            infoLabel.setText("Please fill in the room availability as Available!");
             infoLabel.setVisible(true);
             ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
             new Timer(delay, taskPerformed).start();
