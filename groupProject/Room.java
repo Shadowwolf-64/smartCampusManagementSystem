@@ -1,41 +1,52 @@
 package groupProject;
 
+import javax.swing.*;
+
 public class Room {
-    String roomName;
-    int roomCapacity;
-    boolean disabledAccess;
-    boolean isBooked;
+    private JTextField roomName;
+    private JTextField roomCapacity;
+    private JTextField roomType;
+    private JTextField availability;
+    boolean isAvailable;
     
     //setters and getters
-    public String getRoomName() {
+    public JTextField getRoomName() {
         return roomName;
     }
 
-    public void setRoomName() {
+    public void setRoomName(JTextField roomName) {
         this.roomName = roomName;
     }
 
-    public int getRoomCapacity() {
+    public JTextField getRoomCapacity() {
         return roomCapacity;
     }
 
-    public void setRoomCapacity(int roomCapacity) {
+    public void setRoomCapacity(JTextField roomCapacity) {
         this.roomCapacity = roomCapacity;
     }
 
-    public boolean getDisabledAccess() {
-        return disabledAccess;
+    public JTextField getRoomType() {
+        return roomType;
     }
 
-    public void setDisabledAccess(boolean disabledAccess) {
-        this.disabledAccess = disabledAccess;
+    public void setRoomType(JTextField roomType) {
+        this.roomType = roomType;
     }
 
-    public boolean getIsBooked() {
-        return isBooked;
+    public JTextField getAvailability() {
+        return availability;
     }
 
-    public void setIsBooked(boolean isBooked) {
-        this.isBooked = isBooked;
+    public void setAvailability(JTextField availability) {
+        this.availability = availability;
+    }
+
+    public boolean getIsAvailable() {
+        return isAvailable;
+    }
+
+    public void setIsAvailable(boolean isBooked) {
+        this.isAvailable = isBooked;
     }
 }
