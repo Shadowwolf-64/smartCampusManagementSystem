@@ -241,7 +241,18 @@ public class GUI extends JFrame {
             public void keyPressed(KeyEvent e) {
                 //defines which key needs to be pressed to activate the button
                 if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    studentRecords.addStudent(infoLabel);
+                    //deciding which add method should be implemented based on the current tabbedPane by using the value int of the getSelectedIndex
+                    if(tabbedPane.getSelectedIndex() == 0) {
+                        studentRecords.addStudent(infoLabel);
+                    }else if (tabbedPane.getSelectedIndex() == 1) {
+                        roomScheduler.addRoom(infoLabel);
+                    }else if (tabbedPane.getSelectedIndex() == 2) {
+                        resourceTracker.addBook(infoLabel);
+                    }else if (tabbedPane.getSelectedIndex() == 3) {
+                        resourceTracker.addLabEquip(infoLabel);
+                    }else if (tabbedPane.getSelectedIndex() == 4) {
+                        staffRecords.addStaff(infoLabel);
+                    }
                 }
             }
 
@@ -258,6 +269,22 @@ public class GUI extends JFrame {
                 //defines which key needs to be pressed to activate the button
                 if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
                     management.saveToFile(infoLabel, "groupProject/systemSavedData.txt", studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+
+        reserveButton.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //defines which key needs to be pressed to activate the button
+                if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    reserveButton.addActionListener(_ ->{management.reserving(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);});
                 }
             }
 
