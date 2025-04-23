@@ -166,6 +166,7 @@ public class GUI extends JFrame {
         removeButton.addActionListener(_ -> management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         modifyButton.addActionListener(_ -> management.modifyCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         addButton.addActionListener(_ -> {
+            //deciding which add method should be implemented based on the current tabbedPane by using the value int of the getSelectedIndex
             if(tabbedPane.getSelectedIndex() == 0) {
                 studentRecords.addStudent(infoLabel);
             }else if (tabbedPane.getSelectedIndex() == 4) {

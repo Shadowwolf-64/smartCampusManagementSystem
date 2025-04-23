@@ -99,7 +99,7 @@ public class StaffRecords extends JPanel{
             new Timer(delay, taskPerformed).start();
         } else if (id.getText().isEmpty()) {
             staffId = String.valueOf(management.generateNewID());
-            // confirm addition of student //
+            // confirm addition of staff member //
             int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this new staff member?", "Confirm addition", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             // adding the row
             if (confirm == JOptionPane.YES_OPTION) {
@@ -121,7 +121,7 @@ public class StaffRecords extends JPanel{
                 }
             }
         } else {
-            // confirm addition of student //
+            // confirm addition of staff member //
             int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this new staff member?", "Confirm addition", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             // adding the row
             if (confirm == JOptionPane.YES_OPTION) {
