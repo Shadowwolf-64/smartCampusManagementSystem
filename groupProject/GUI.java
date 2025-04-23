@@ -137,7 +137,7 @@ public class GUI extends JFrame {
         //creating the class objects
         StudentRecords studentRecords = new StudentRecords(studentRecordModel);
         StaffRecords staffRecords = new StaffRecords(staffRecordModel);
-        ResourceTracker resourceTracker = new ResourceTracker();
+        ResourceTracker resourceTracker = new ResourceTracker(bookModel, labEquipModel);
         RoomScheduler roomScheduler = new RoomScheduler(roomModel);
 
         // creating management for changeListener //
@@ -171,6 +171,10 @@ public class GUI extends JFrame {
                 studentRecords.addStudent(infoLabel);
             }else if (tabbedPane.getSelectedIndex() == 1) {
                 roomScheduler.addRoom(infoLabel);
+            }else if (tabbedPane.getSelectedIndex() == 2) {
+                resourceTracker.addBook(infoLabel);
+            }else if (tabbedPane.getSelectedIndex() == 3) {
+                resourceTracker.addLabEquip(infoLabel);
             }else if (tabbedPane.getSelectedIndex() == 4) {
                 staffRecords.addStaff(infoLabel);
             }
