@@ -130,6 +130,13 @@ public class GUI extends JFrame {
         roomTable.setName("Rooms Table");
         staffRecordTable.setName("Staff Records Table");
 
+        //making table headings unmoveable //
+        studentRecordTable.getTableHeader().setReorderingAllowed(false);
+        bookTable.getTableHeader().setReorderingAllowed(false);
+        labEquipTable.getTableHeader().setReorderingAllowed(false);
+        roomTable.getTableHeader().setReorderingAllowed(false);
+        staffRecordTable.getTableHeader().setReorderingAllowed(false);
+
         // adding the tables //
         studentScrollPane.setViewportView(studentRecordTable);
         booksScrollPane.setViewportView(bookTable);
