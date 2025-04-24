@@ -72,7 +72,8 @@ public class Management extends JSplitPane {
     }
 
     // method to remove the row that is checked in a table //
-    public void removeCheckedRow(JTable ... tables) {
+    public void removeCheckedRow(JLabel infoLabel, JTable ... tables) {
+        int delay = 5000;
         for (JTable table : tables) {
             DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
                 // Iterate through rows in reverse order to prevent issues with the index when removing more than 1 row //
@@ -89,6 +90,11 @@ public class Management extends JSplitPane {
                         if (confirm == JOptionPane.YES_OPTION) {
                             tableModel.removeRow(i);
                         }
+                    } else {
+                        infoLabel.setText("Saved Successfully");
+                        infoLabel.setVisible(true);
+                        ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                        new Timer(delay, taskPerformed).start();
                     }
                 }
             }

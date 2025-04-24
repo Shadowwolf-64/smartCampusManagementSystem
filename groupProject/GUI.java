@@ -166,7 +166,7 @@ public class GUI extends JFrame {
 
         // actionListeners for buttons //
         findButton.addActionListener(_ -> management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
-        removeButton.addActionListener(_ -> management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
+        removeButton.addActionListener(_ -> management.removeCheckedRow(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         modifyButton.addActionListener(_ -> management.modifyCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         addButton.addActionListener(_ -> {
             //deciding which add method should be implemented based on the current tabbedPane by using the value int of the getSelectedIndex
@@ -213,7 +213,7 @@ public class GUI extends JFrame {
             public void keyPressed(KeyEvent e) {
                 //defines which key needs to be pressed to activate the button
                 if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    management.removeCheckedRow(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);
+                    management.removeCheckedRow(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);
                 }
             }
 
