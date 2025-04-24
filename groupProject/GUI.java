@@ -172,7 +172,7 @@ public class GUI extends JFrame {
 
 
         // actionListeners for buttons //
-        findButton.addActionListener(_ -> management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
+        findButton.addActionListener(_ -> management.searchById(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         removeButton.addActionListener(_ -> management.removeCheckedRow(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         modifyButton.addActionListener(_ -> management.modifyCheckedRow(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable));
         addButton.addActionListener(_ -> {
@@ -204,7 +204,7 @@ public class GUI extends JFrame {
             public void keyPressed(KeyEvent e) {
                 //defines which key needs to be pressed to activate the button
                 if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    management.searchById(studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);
+                    management.searchById(infoLabel, studentRecordTable, bookTable, labEquipTable, roomTable, staffRecordTable);
                 }
             }
 
