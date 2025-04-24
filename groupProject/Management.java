@@ -167,6 +167,8 @@ public class Management extends JSplitPane {
 
     public void loadFromFile(JLabel infoLabel, String filePath, JTable ... tables) {
         File fileToLoad = new File(filePath);
+        //sets time for how long message will be displayed //
+        int delay = 5000;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileToLoad))) {
             String line;
@@ -207,9 +209,15 @@ public class Management extends JSplitPane {
 
             //load successful message//
             infoLabel.setText("Data loaded successfully");
+            infoLabel.setVisible(true);
+            ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+            new Timer(delay, taskPerformed).start();
         } catch (IOException ex) {
             //Error message //
             infoLabel.setText("Error loading: " + ex.getMessage());
+            infoLabel.setVisible(true);
+            ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+            new Timer(delay, taskPerformed).start();
         }
     }
 
