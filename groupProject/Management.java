@@ -77,6 +77,7 @@ public class Management extends JSplitPane {
         for (JTable table : tables) {
             DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
             int rows = tableModel.getRowCount();
+            //checks that tables have been loaded to the GUI before trying to remove a row
             if (rows == 0 ) {
                 infoLabel.setText("No tables loaded, please press the load button.");
                 infoLabel.setVisible(true);
@@ -255,39 +256,53 @@ public class Management extends JSplitPane {
         int delay = 5000;
         for (JTable table : tables) {
             DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-            // Iterate through rows in reverse order to prevent issues with the index
-            for (int i = tableModel.getRowCount() - 1; i >= 0; i--) {
-                // Assumes the checkbox column is the last column
-                int checkboxColumnIndex = tableModel.getColumnCount() - 1;
+            int rows = tableModel.getRowCount();
+            //checks that tables have been loaded to the GUI before trying to remove a row
+            if (rows == 0 ) {
+                infoLabel.setText("No tables loaded, please press the load button.");
+                infoLabel.setVisible(true);
+                ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                new Timer(delay, taskPerformed).start();
+            } else {
+                // Iterate through rows in reverse order to prevent issues with the index
+                for (int i = tableModel.getRowCount() - 1; i >= 0; i--) {
+                    // Assumes the checkbox column is the last column
+                    int checkboxColumnIndex = tableModel.getColumnCount() - 1;
 
-                // Check if the checkbox is selected
-                Boolean isChecked = (Boolean) tableModel.getValueAt(i, checkboxColumnIndex);
-                if (isChecked != null && isChecked) {
-                    for (int col = 3; col < checkboxColumnIndex; col++) {
-                        Object currentValue = tableModel.getValueAt(i, col);
-                        String availabilityChange1 = "In Use";
-                        if (Objects.equals(String.valueOf(currentValue), "Available")) {
-                            try {
-                                int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to make this reservation?", "Confirm reservation", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-                                // Update the row
-                                if (confirm == JOptionPane.YES_OPTION) {
-                                    tableModel.setValueAt(availabilityChange1, i, col);
-                                    // uncheck the box after changes are made
-                                    tableModel.setValueAt(false, i, checkboxColumnIndex);
-                                    infoLabel.setText("Reservation successful!"); //confirmation message
-                                    infoLabel.setVisible(true);
-                                    ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
-                                    new Timer(delay, taskPerformed).start();
+                    // Check if the checkbox is selected
+                    Boolean isChecked = (Boolean) tableModel.getValueAt(i, checkboxColumnIndex);
+                    if (isChecked != null && isChecked) {
+                        for (int col = 3; col < checkboxColumnIndex; col++) {
+                            Object currentValue = tableModel.getValueAt(i, col);
+                            String availabilityChange1 = "In Use";
+                            if (Objects.equals(String.valueOf(currentValue), "Available")) {
+                                try {
+                                    int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to make this reservation?", "Confirm reservation", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                                    // Update the row
+                                    if (confirm == JOptionPane.YES_OPTION) {
+                                        tableModel.setValueAt(availabilityChange1, i, col);
+                                        // uncheck the box after changes are made
+                                        tableModel.setValueAt(false, i, checkboxColumnIndex);
+                                        infoLabel.setText("Reservation successful!"); //confirmation message
+                                        infoLabel.setVisible(true);
+                                        ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                                        new Timer(delay, taskPerformed).start();
+                                    }
+                                }catch (Exception ex) {
+                                    infoLabel.setText("You screwed up!");
+                                    throw new RuntimeException(ex);
                                 }
-                            }catch (Exception ex) {
-                                infoLabel.setText("You screwed up!");
-                                throw new RuntimeException(ex);
+                            }else {
+                                JOptionPane.showMessageDialog(null, "Unable to reserve, already in use", "Reservation failure", JOptionPane.INFORMATION_MESSAGE);
+                                // uncheck the box after changes are made
+                                tableModel.setValueAt(false, i, checkboxColumnIndex);
                             }
-                        }else {
-                            JOptionPane.showMessageDialog(null, "Unable to reserve, already in use", "Reservation failure", JOptionPane.INFORMATION_MESSAGE);
-                            // uncheck the box after changes are made
-                            tableModel.setValueAt(false, i, checkboxColumnIndex);
                         }
+                    }else {
+                        infoLabel.setText("No checkbox selected. Please select a checkbox.");
+                        infoLabel.setVisible(true);
+                        ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                        new Timer(delay, taskPerformed).start();
                     }
                 }
             }
