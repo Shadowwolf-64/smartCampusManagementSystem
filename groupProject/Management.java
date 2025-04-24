@@ -76,6 +76,13 @@ public class Management extends JSplitPane {
         int delay = 5000;
         for (JTable table : tables) {
             DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+            int rows = tableModel.getRowCount();
+            if (rows == 0 ) {
+                infoLabel.setText("No tables loaded, please press the load button.");
+                infoLabel.setVisible(true);
+                ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                new Timer(delay, taskPerformed).start();
+            } else {
                 // Iterate through rows in reverse order to prevent issues with the index when removing more than 1 row //
                 for (int i = tableModel.getRowCount() - 1; i >= 0; i--) {
                     // Assumes the checkbox column is the last column
@@ -99,6 +106,8 @@ public class Management extends JSplitPane {
                 }
             }
         }
+    }
+
 
     public void modifyCheckedRow(JLabel infoLabel, JTable ... tables) {
         int delay = 5000;
