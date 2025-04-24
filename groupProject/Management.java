@@ -72,7 +72,8 @@ public class Management extends JSplitPane {
     }
 
     // method to remove the row that is checked in a table //
-    public void removeCheckedRow(JTable ... tables) {
+    public void removeCheckedRow(JLabel infoLabel, JTable ... tables) {
+        int delay = 5000;
         for (JTable table : tables) {
             DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
                 // Iterate through rows in reverse order to prevent issues with the index when removing more than 1 row //
@@ -89,42 +90,53 @@ public class Management extends JSplitPane {
                         if (confirm == JOptionPane.YES_OPTION) {
                             tableModel.removeRow(i);
                         }
+                    } else {
+                        infoLabel.setText("No checkbox selected. Please select a checkbox.");
+                        infoLabel.setVisible(true);
+                        ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                        new Timer(delay, taskPerformed).start();
                     }
                 }
             }
         }
 
-    public void modifyCheckedRow(JTable ... tables) {
+    public void modifyCheckedRow(JLabel infoLabel, JTable ... tables) {
+        int delay = 5000;
         for (JTable table : tables) {
             DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
             // Assumes the checkbox column is the last column //
             for (int i = tableModel.getRowCount() - 1; i >= 0; i--) {
             int checkboxColumnIndex = tableModel.getColumnCount() - 1;
 
-            // Check if the checkbox is selected //
-            Boolean isChecked = (Boolean) tableModel.getValueAt(i, checkboxColumnIndex);
-            if (isChecked != null && isChecked) {
+                // Check if the checkbox is selected //
+                Boolean isChecked = (Boolean) tableModel.getValueAt(i, checkboxColumnIndex);
+                if (isChecked != null && isChecked) {
 
-                // Iterate through rows in reverse order to prevent issues with the index when removing more than 1 row //
-                for (int col = 0; col < checkboxColumnIndex; col++) {
-                    String columnName = tableModel.getColumnName(col);
-                    Object currentValue = tableModel.getValueAt(i, col);
+                    // Iterate through rows in reverse order to prevent issues with the index when removing more than 1 row //
+                    for (int col = 0; col < checkboxColumnIndex; col++) {
+                        String columnName = tableModel.getColumnName(col);
+                        Object currentValue = tableModel.getValueAt(i, col);
 
-                    // Prompt the user for a new value
-                    String newValue = JOptionPane.showInputDialog(
-                            null,
-                            "Enter new value for " + columnName + " (current: " + currentValue + "):",
-                            "Modify Row",
-                            JOptionPane.QUESTION_MESSAGE
-                    );
+                        // Prompt the user for a new value
+                        String newValue = JOptionPane.showInputDialog(
+                                null,
+                                "Enter new value for " + columnName + " (current: " + currentValue + "):",
+                                "Modify Row",
+                                JOptionPane.QUESTION_MESSAGE
+                        );
 
-                        // update if user provides input //
-                        if (newValue != null && !newValue.trim().isEmpty()) {
-                            tableModel.setValueAt(newValue, i, col);
+                            // update if user provides input //
+                            if (newValue != null && !newValue.trim().isEmpty()) {
+                                tableModel.setValueAt(newValue, i, col);
+                            }
                         }
-                    }
-                // uncheck the box after changes are made //
-                tableModel.setValueAt(false, i, checkboxColumnIndex);
+                    // uncheck the box after changes are made //
+                    tableModel.setValueAt(false, i, checkboxColumnIndex);
+                } else {
+                    infoLabel.setText("No checkbox selected. Please select a checkbox.");
+                    infoLabel.setVisible(true);
+                    ActionListener taskPerformed = _ -> infoLabel.setVisible(false);
+                    new Timer(delay, taskPerformed).start();
                 }
             }
         }
