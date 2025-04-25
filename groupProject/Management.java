@@ -150,11 +150,11 @@ public class Management extends JSplitPane {
                                     JOptionPane.QUESTION_MESSAGE
                             );
 
-                                // update if user provides input //
-                                if (newValue != null && !newValue.trim().isEmpty()) {
-                                    tableModel.setValueAt(newValue, i, col);
-                                }
+                            // update if user provides input //
+                            if (newValue != null && !newValue.trim().isEmpty()) {
+                                tableModel.setValueAt(newValue, i, col);
                             }
+                        }
                         // uncheck the box after changes are made //
                         tableModel.setValueAt(false, i, checkboxColumnIndex);
                     } else {
@@ -175,28 +175,27 @@ public class Management extends JSplitPane {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileToSave))) {
             // iterate through all tables //
-        for (JTable table : tables) {
-            // writes the table names //
-            writer.write("\n" + table.getName() + "\n");
-            // gets the table model to access the data //
-            DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+            for (JTable table : tables) {
+                // writes the table names //
+                writer.write("\n" + table.getName() + "\n");
+                // gets the table model to access the data //
+                DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 
-            //writes column names to file //
-            for (int i = 0; i < tableModel.getColumnCount(); i++) {
-                writer.write(tableModel.getColumnName(i) + "\t");
+                //writes column names to file //
+                for (int i = 0; i < tableModel.getColumnCount(); i++) {
+                    writer.write(tableModel.getColumnName(i) + "\t");
                 }
                 writer.write("\n");
 
-            // writes the row to file //
-            for (int i = 0; i < tableModel.getRowCount(); i++) {
-                for (int j = 0; j < tableModel.getColumnCount() - 1; j++) {
-                    Object value = tableModel.getValueAt(i, j);
-                    writer.write((value != null ? value.toString() : "") + "\t");
+                // writes the row to file //
+                for (int i = 0; i < tableModel.getRowCount(); i++) {
+                    for (int j = 0; j < tableModel.getColumnCount() - 1; j++) {
+                        Object value = tableModel.getValueAt(i, j);
+                        writer.write((value != null ? value.toString() : "") + "\t");
                     }
                     writer.write("\n");
                 }
             }
-
             // saved successfully message //
             infoLabel.setText("Saved Successfully");
             infoLabel.setVisible(true);
@@ -222,8 +221,6 @@ public class Management extends JSplitPane {
 
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
-
-
                 //checks if table name matches line //
                 for(JTable table : tables) {
                     if(line.equalsIgnoreCase(table.getName())) {
@@ -236,7 +233,6 @@ public class Management extends JSplitPane {
                 if(currentTableModel == null || line.isEmpty() || line.contains("Name") || line.contains("Table")) {
                     continue;
                 }
-
                 // add rows to current table //
                 String[] rowData = line.split("\t");
                 if (currentTableModel != null) {
@@ -252,7 +248,6 @@ public class Management extends JSplitPane {
                     currentTableModel.addRow(rowWithCheckbox);
                 }
             }
-
             //load successful message//
             infoLabel.setText("Data loaded successfully");
             infoLabel.setVisible(true);
@@ -321,7 +316,6 @@ public class Management extends JSplitPane {
                     }
                 }
             }
-
         }
     }
 
