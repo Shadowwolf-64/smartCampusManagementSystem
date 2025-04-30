@@ -90,7 +90,7 @@ public class StaffRecords extends JPanel{
         String depart = dept.getText();
 
         //sets the time limit for displaying error/feedback messages when adding tasks
-        int delay = 4500;
+        int delay = 5000;
 
         if(Objects.equals(staffname, "") || Objects.equals(offHours, "") || Objects.equals(depart, "")) {
             infoLabel.setText("Please fill in all the boxes correctly");

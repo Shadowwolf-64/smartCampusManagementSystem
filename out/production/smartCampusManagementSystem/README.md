@@ -1,1 +1,5 @@
 # smartCampusManagementSystem
+
+To the run the application it should be first accessed through the GitHub repository. Then to the main branch of the repository. Click on the code button and then the local tab to download the zip file of the project. Then to run the actual code first extract the zip file then open the main.java file on the chosen IDE and run the program. Recommended IDE is IntelliJ with the latest java version and the default libraries used by IntelliJ. 
+
+Key features include multiple tabs allowing more information and a more modular design, which helps save space creating a more user-friendly design due to reduced clutter. Another key feature is the feedback area that gives a concise description of any inputs done by the user, allowing communication between machine and user to reduce confusion. Also the program features a control panel which allows users to search for, add, remove, modify, save and load records as well as featuring a reservation system for rooms on campus

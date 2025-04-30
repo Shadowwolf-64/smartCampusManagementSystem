@@ -82,7 +82,7 @@ public class RoomScheduler extends JPanel{
         String available = availability.getText();
         String type = roomType.getText();
 
-        int delay = 4500;
+        int delay = 5000;
 
         if(Objects.equals(roomName, "") || Objects.equals(cap, "") || Objects.equals(type, "")) {
             infoLabel.setText("Please fill in all the boxes correctly");

@@ -85,7 +85,7 @@ public class ResourceTracker extends JPanel{
         String deptOrAuth = departmentOrAuthor.getText();
 
         //sets the time limit for displaying error/feedback messages when adding book
-        int delay = 4500;
+        int delay = 5000;
 
         if(Objects.equals(bookname, "") || Objects.equals(deptOrAuth, "")) {
             infoLabel.setText("Please fill in all the boxes correctly");
@@ -170,7 +170,7 @@ public class ResourceTracker extends JPanel{
         String deptOrAuth = departmentOrAuthor.getText();
 
         //sets the time limit for displaying error/feedback messages when adding resources
-        int delay = 4500;
+        int delay = 5000;
 
         if(Objects.equals(equipName, "") || Objects.equals(deptOrAuth, "")) {
             infoLabel.setText("Please fill in all the boxes correctly");
